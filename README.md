@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./docs/skillshare-logo.svg" alt="Skillshare" width="100" />
-</p>
-
 <h1 align="center">FormatPHP</h1>
 
 <p align="center">
