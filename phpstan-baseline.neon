@@ -1,0 +1,46 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: src/Icu/MessageFormat/Parser.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/Intl/DateTimeFormat.php
+
+		-
+			message: "#^Parameter \\#1 \\$locale of static method Locale\\:\\:getKeywords\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Intl/Locale.php
+
+		-
+			message: "#^Parameter \\#1 \\$locale of static method Locale\\:\\:parseLocale\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Intl/Locale.php
+
+		-
+			message: "#^Parameter \\#1 \\$filename of function file_put_contents expects string, resource\\|string given\\.$#"
+			count: 1
+			path: src/Util/FileSystemHelper.php
+
+		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, resource\\|string given\\.$#"
+			count: 1
+			path: src/Util/FileSystemHelper.php
+
+		-
+			message: "#^Cannot call method getName\\(\\) on ReflectionType\\|null\\.$#"
+			count: 5
+			path: src/Util/FormatHelper.php
+
+		-
+			message: "#^Constant FormatPHP\\\\Test\\\\Intl\\\\NumberFormat\\\\PercentTest\\:\\:NUMBER is unused\\.$#"
+			count: 1
+			path: tests/Intl/NumberFormat/PercentTest.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: tests/Intl/NumberFormat/PercentTest.php

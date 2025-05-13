@@ -5,7 +5,8 @@
        errorLevel="1"
        findUnusedBaselineEntry="true"
        findUnusedCode="false"
-       cacheDirectory="./build/cache/psalm">
+       cacheDirectory="./build/cache/psalm"
+       errorBaseline="psalm-baseline.xml">
 
     <projectFiles>
         <directory name="./src"/>

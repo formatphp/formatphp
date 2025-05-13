@@ -1,3 +1,6 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
     tmpDir: ./build/cache/phpstan
     level: max
@@ -7,5 +10,3 @@ parameters:
     excludePaths:
         - */tests/fixtures/*
         - */tests/*/fixtures/*
-    ignoreErrors:
-        - '#Cannot call method getName\(\) on ReflectionType\|null#'

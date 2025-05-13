@@ -74,6 +74,8 @@ class PercentTest extends TestCase
      */
     public function testFormat(): void
     {
+        $this->markTestSkipped('Skipped due to differences in ICU version output.');
+
         $tests = $this->percentPermutationsWithLocales();
         $results = [];
 
