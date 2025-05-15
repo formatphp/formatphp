@@ -43,6 +43,7 @@ use FormatPHP\Format\WriterInterface;
 use FormatPHP\Format\WriterOptions;
 use FormatPHP\MessageCollection;
 use ReflectionFunction;
+use ReflectionNamedType;
 use Throwable;
 
 use function assert;
@@ -166,7 +167,7 @@ class FormatHelper
             assert($formatter !== null);
 
             if (!$formatter instanceof Closure) {
-                $formatter = Closure::fromCallable($formatter);
+                $formatter = $formatter(...);
             }
 
             $reflected = new ReflectionFunction($formatter);
@@ -175,18 +176,25 @@ class FormatHelper
 
             $param1 = $reflected->getParameters()[0];
 
-            assert($param1->hasType() && $param1->getType()->getName() === 'array');
-            assert($reflected->hasReturnType() && $reflected->getReturnType()->getName() === MessageCollection::class);
+            assert(
+                $param1->hasType()
+                    && $param1->getType() instanceof ReflectionNamedType
+                    && $param1->getType()->getName() === 'array',
+            );
+            assert(
+                $reflected->hasReturnType()
+                    && $reflected->getReturnType() instanceof ReflectionNamedType
+                    && $reflected->getReturnType()->getName() === MessageCollection::class,
+            );
         } catch (Throwable $exception) {
             throw new InvalidArgumentException(sprintf(
                 'The format provided is not a known format, an instance of '
                     . '%s, or a callable of the shape `callable(array<mixed>):%s`.',
                 ReaderInterface::class,
                 MessageCollection::class,
-            ));
+            ), previous: $exception);
         }
 
-        /** @var ReaderCallableType */
         return $formatter;
     }
 
@@ -201,7 +209,7 @@ class FormatHelper
             assert($formatter !== null);
 
             if (!$formatter instanceof Closure) {
-                $formatter = Closure::fromCallable($formatter);
+                $formatter = $formatter(...);
             }
 
             $reflected = new ReflectionFunction($formatter);
@@ -211,9 +219,21 @@ class FormatHelper
             $param1 = $reflected->getParameters()[0];
             $param2 = $reflected->getParameters()[1];
 
-            assert($param1->hasType() && $param1->getType()->getName() === DescriptorCollection::class);
-            assert($param2->hasType() && $param2->getType()->getName() === WriterOptions::class);
-            assert($reflected->hasReturnType() && $reflected->getReturnType()->getName() === 'array');
+            assert(
+                $param1->hasType()
+                    && $param1->getType() instanceof ReflectionNamedType
+                    && $param1->getType()->getName() === DescriptorCollection::class,
+            );
+            assert(
+                $param2->hasType()
+                    && $param2->getType() instanceof ReflectionNamedType
+                    && $param2->getType()->getName() === WriterOptions::class,
+            );
+            assert(
+                $reflected->hasReturnType()
+                    && $reflected->getReturnType() instanceof ReflectionNamedType
+                    && $reflected->getReturnType()->getName() === 'array',
+            );
         } catch (Throwable $exception) {
             throw new InvalidArgumentException(sprintf(
                 'The format provided is not a known format, an instance of '
@@ -221,10 +241,9 @@ class FormatHelper
                 WriterInterface::class,
                 DescriptorCollection::class,
                 WriterOptions::class,
-            ));
+            ), previous: $exception);
         }
 
-        /** @var WriterCallableType */
         return $formatter;
     }
 }

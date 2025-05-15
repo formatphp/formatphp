@@ -97,10 +97,9 @@ class NumberSkeletonParser
         $tokens = new Type\NumberSkeletonTokenCollection();
 
         foreach ($stringTokens as $stringToken) {
-            /** @var string[] $stemAndOptions */
-            $stemAndOptions = preg_split('/[\/]/u', $stringToken);
+            $stemAndOptions = preg_split('/\//u', $stringToken);
 
-            if (count($stemAndOptions) === 0) {
+            if ($stemAndOptions === false || count($stemAndOptions) === 0) {
                 throw new Exception\InvalidArgumentException('Invalid number skeleton');
             }
 
@@ -431,6 +430,7 @@ class NumberSkeletonParser
          * @throws Exception\UnsupportedOptionException
          */
         return function (array $m) use ($options): string {
+            /** @var string[] $matches */
             $matches = [
                 $m[0] ?? '',
                 $m[1] ?? '',
@@ -463,6 +463,7 @@ class NumberSkeletonParser
          * @param string[] $m
          */
         return function (array $m) use ($options): string {
+            /** @var string[] $matches */
             $matches = [$m[0] ?? '', $m[1] ?? '', $m[2] ?? '', $m[3] ?? '', $m[4] ?? '', $m[5] ?? ''];
 
             // .000* case (before ICU67 it was .000+)
@@ -503,6 +504,7 @@ class NumberSkeletonParser
          * @param string[] $m
          */
         return function (array $m) use ($options): string {
+            /** @var string[] $matches */
             $matches = [
                 $m[0] ?? '',
                 $m[1] ?? '',

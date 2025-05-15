@@ -382,7 +382,7 @@ class DateTimeFormat implements DateTimeFormatInterface
             PhpIntlDateFormatter::FULL,
         );
 
-        preg_match(self::HOUR_PATTERN, $dateFormatter->getPattern(), $matches);
+        preg_match(self::HOUR_PATTERN, (string) $dateFormatter->getPattern(), $matches);
 
         // Fallback to h12, if we can't determine the hour cycle from this locale.
         return $locale->withHourCycle(self::HOUR_CYCLE_MAP[$matches[1] ?? 'h']);

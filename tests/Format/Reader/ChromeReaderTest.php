@@ -6,7 +6,6 @@ namespace FormatPHP\Test\Format\Reader;
 
 use FormatPHP\Exception\InvalidMessageShapeException;
 use FormatPHP\Format\Reader\ChromeReader;
-use FormatPHP\MessageCollection;
 use FormatPHP\MessageInterface;
 use FormatPHP\Test\TestCase;
 
@@ -49,7 +48,6 @@ class ChromeReaderTest extends TestCase
 
         $collection = $formatReader($data);
 
-        $this->assertInstanceOf(MessageCollection::class, $collection);
         $this->assertCount(2, $collection);
         $this->assertInstanceOf(MessageInterface::class, $collection['foo']);
         $this->assertSame('I am foo', $collection['foo']->getMessage());

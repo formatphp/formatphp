@@ -30,6 +30,7 @@ use FormatPHP\Exception\UnableToProcessFileException;
 use FormatPHP\Exception\UnableToWriteFileException;
 use JsonException;
 
+use function assert;
 use function file_get_contents;
 use function file_put_contents;
 use function fwrite;
@@ -124,12 +125,10 @@ class FileSystemHelper
     }
 
     /**
-     * @param string | resource | mixed $file
-     *
      * @throws InvalidArgumentException
      * @throws UnableToWriteFileException
      */
-    public function writeContents($file, string $contents): void
+    public function writeContents(mixed $file, string $contents): void
     {
         if (!is_string($file) && (!is_resource($file) || get_resource_type($file) !== 'stream')) {
             throw new InvalidArgumentException(sprintf(
@@ -147,6 +146,8 @@ class FileSystemHelper
 
             return;
         }
+
+        assert(is_string($file));
 
         $bytes = @file_put_contents($file, $contents);
 

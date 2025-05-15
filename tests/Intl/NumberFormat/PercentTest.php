@@ -19,6 +19,7 @@ use FormatPHP\Test\TestCase;
  */
 class PercentTest extends TestCase
 {
+    /** @phpstan-ignore classConstant.unused */
     private const NUMBER = 10000;
 
     private const LOCALES = [
@@ -74,8 +75,9 @@ class PercentTest extends TestCase
      */
     public function testFormat(): void
     {
-        $this->markTestSkipped('Skipped due to differences in ICU version output.');
+        $this->markTestSkipped('Skipping test that fails because of inconsistencies between ICU versions');
 
+        /** @phpstan-ignore deadCode.unreachable */
         $tests = $this->percentPermutationsWithLocales();
         $results = [];
 

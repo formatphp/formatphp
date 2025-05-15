@@ -51,6 +51,7 @@ use Psr\Log\LoggerInterface;
 use Ramsey\Collection\Exception\CollectionMismatchException;
 
 use function array_filter;
+use function assert;
 use function class_exists;
 use function count;
 use function is_a;
@@ -196,7 +197,6 @@ class MessageExtractor
         if (class_exists($parserNameOrScript) && is_a($parserNameOrScript, DescriptorParserInterface::class, true)) {
             $parser = new $parserNameOrScript();
         } else {
-            /** @var DescriptorParserCallable | null $parser */
             $parser = $this->file->loadClosureFromScript($parserNameOrScript);
         }
 
@@ -283,14 +283,11 @@ class MessageExtractor
     }
 
     /**
-     * @return Closure(DescriptorInterface):mixed
+     * @return Closure(DescriptorInterface): (Descriptor | null)
      */
     private function flattenMessage(): Closure
     {
-        /**
-         * @var Closure(DescriptorInterface):mixed
-         */
-        return function (Descriptor $descriptor): ?Descriptor {
+        return function (DescriptorInterface $descriptor): ?Descriptor {
             $message = $descriptor->getDefaultMessage();
             $messageFormatParser = new MessageFormatParser((string) $message);
             $result = $messageFormatParser->parse();
@@ -298,6 +295,8 @@ class MessageExtractor
             if ($result->err !== null) {
                 return null;
             }
+
+            assert($descriptor instanceof Descriptor);
 
             /** @var MessageFormatParser\Type\ElementCollection $messageAst */
             $messageAst = $result->val;

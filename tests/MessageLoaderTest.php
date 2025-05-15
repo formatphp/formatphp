@@ -11,7 +11,6 @@ use FormatPHP\Format\Reader\FormatPHPReader;
 use FormatPHP\Format\ReaderInterface;
 use FormatPHP\Intl\Locale;
 use FormatPHP\MessageCollection;
-use FormatPHP\MessageInterface;
 use FormatPHP\MessageLoader;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -82,7 +81,6 @@ class MessageLoaderTest extends TestCase
 
         $this->assertGreaterThanOrEqual(1, $collection->count());
         $this->assertNotNull($collection['about.inspire']);
-        $this->assertInstanceOf(MessageInterface::class, $collection['about.inspire']);
     }
 
     public function testLoadMessagesWithFallback(): void
@@ -101,7 +99,6 @@ class MessageLoaderTest extends TestCase
 
         $this->assertCount(1, $collection);
         $this->assertNotNull($collection['about.inspire']);
-        $this->assertInstanceOf(MessageInterface::class, $collection['about.inspire']);
         $this->assertSame(
             'في Skillshare ، نقوم بتمكين الأعضاء للحصول على الإلهام.',
             $collection['about.inspire']->getMessage(),
@@ -126,7 +123,6 @@ class MessageLoaderTest extends TestCase
 
         $this->assertCount(1, $collection);
         $this->assertNotNull($collection['about.inspire']);
-        $this->assertInstanceOf(MessageInterface::class, $collection['about.inspire']);
         $this->assertSame(
             'في Skillshare ، نقوم بتمكين الأعضاء للحصول على الإلهام.',
             $collection['about.inspire']->getMessage(),
@@ -165,7 +161,6 @@ class MessageLoaderTest extends TestCase
 
         $this->assertGreaterThanOrEqual(1, $collection->count());
         $this->assertNotNull($collection['about.inspire']);
-        $this->assertInstanceOf(MessageInterface::class, $collection['about.inspire']);
         $this->assertSame(
             '[!! Ḁṭ Ṡǩíííĺĺśśśḫâŕŕŕè, ẘè èṁṗṗṗŏẘèèèŕ ṁṁṁèṁḃḃḃèŕśśś ṭŏŏŏ ĝèèèṭ íííńśṗṗṗíŕèèèḋ. !!]',
             $collection['about.inspire']->getMessage(),

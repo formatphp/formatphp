@@ -380,7 +380,7 @@ class Locale implements LocaleInterface
     }
 
     /**
-     * @return array{0: string, 1: callable}
+     * @return array{0: string, 1: callable(): (string | null)}
      */
     private function getUnicodeKeywordWithValue(string $keyword, string $defaultValue): array
     {
@@ -410,7 +410,7 @@ class Locale implements LocaleInterface
      */
     private function parseLocale(string $locale): array
     {
-        $canonicalizedLocale = PhpLocale::canonicalize($locale);
+        $canonicalizedLocale = (string) PhpLocale::canonicalize($locale);
 
         /** @var array{language?: string, script?: string, region?: string, grandfathered?: string} $parsed */
         $parsed = PhpLocale::parseLocale($canonicalizedLocale);

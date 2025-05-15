@@ -134,10 +134,6 @@ class PragmaCollectorVisitor extends NodeVisitorAbstract
 
         preg_match_all('/(([a-z0-9_\-]+):([a-z0-9_\-]+))+/i', $metadata, $matches);
 
-        /**
-         * @var int $index
-         * @var string $propertyName
-         */
         foreach ($matches[2] as $index => $propertyName) {
             $compareParsed .= preg_replace('/\s+/', '', strtolower("$propertyName:{$matches[3][$index]}"));
             $this->parsedPragma[$propertyName] = $matches[3][$index];

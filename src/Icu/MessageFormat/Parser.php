@@ -782,6 +782,7 @@ class Parser
                 }
         }
 
+        /** @phpstan-ignore deadCode.unreachable */
         return $this->error(
             Error::INVALID_ARGUMENT_TYPE,
             new Type\Location($typeStartPosition, $typeEndPosition),

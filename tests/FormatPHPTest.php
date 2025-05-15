@@ -102,8 +102,8 @@ class FormatPHPTest extends TestCase
         $locale = new Locale('en-US');
         $config = new Config($locale, null, [
             'homeLink' => fn (string $text): string => '<a href="https://example.com>' . $text . '</a>',
-            'boldface' => fn ($text) => "<strong>$text</strong>",
-            'italicized' => fn ($text) => "<em>$text</em>",
+            'boldface' => fn (string $text) => "<strong>$text</strong>",
+            'italicized' => fn (string $text) => "<em>$text</em>",
         ]);
 
         $message = new Message('myMessage', '<homeLink>Go <boldface>home</boldface></homeLink>, {name}!');

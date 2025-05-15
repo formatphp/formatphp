@@ -30,7 +30,7 @@ class DateTimeFormatTest extends TestCase
 
     private const TEST_TIMEZONE = 'America/Chicago';
 
-    private ?string $defaultTimezone;
+    private string $defaultTimezone;
 
     protected function setUp(): void
     {
@@ -40,7 +40,7 @@ class DateTimeFormatTest extends TestCase
 
     protected function tearDown(): void
     {
-        date_default_timezone_set($this->defaultTimezone ?? 'UTC');
+        date_default_timezone_set($this->defaultTimezone);
     }
 
     /**
@@ -646,7 +646,7 @@ class DateTimeFormatTest extends TestCase
             ];
         }
 
-        /** @var array<array{dateStyle: string | null, timeStyle: string | null, additionalOptions: OptionsType}> */
+        /** @phpstan-ignore return.type */
         return $tests;
     }
 }

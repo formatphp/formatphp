@@ -431,7 +431,7 @@ class MessageExtractorTest extends TestCase
     public function testProcessLogsErrorForInvalidFormatter(): void
     {
         $logger = $this->mockery(LoggerInterface::class);
-        $logger->shouldReceive('error')->withArgs(function (string $message): bool {
+        $logger->expects('error')->withArgs(function (string $message): bool {
             $expected = 'The format provided is not a known format, an instance of '
             . 'FormatPHP\\Format\\WriterInterface, or a callable of the '
             . 'shape `callable(FormatPHP\\DescriptorCollection,'
@@ -454,9 +454,6 @@ class MessageExtractorTest extends TestCase
         ob_start();
         $extractor->process([__DIR__ . '/Parser/Descriptor/fixtures/*.php']);
         ob_end_clean();
-
-        // Perform assertion to avoid "risky" test warning.
-        $this->assertTrue(true);
     }
 
     public function testProcessWithNoResults(): void
