@@ -15,6 +15,7 @@ use FormatPHP\Intl\NumberFormatOptions;
 use FormatPHP\Message;
 use FormatPHP\MessageCollection;
 use Locale as PhpLocale;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function date;
 
@@ -403,9 +404,8 @@ class FormatPHPTest extends TestCase
 
     /**
      * @param OptionsType $options
-     *
-     * @dataProvider formatDisplayNameProvider
      */
+    #[DataProvider('formatDisplayNameProvider')]
     public function testFormatDisplayName(string $tag, string $value, array $options, ?string $expected): void
     {
         $locale = new Locale($tag);
@@ -420,7 +420,7 @@ class FormatPHPTest extends TestCase
     /**
      * @return array<array{tag: string, value: string, options: OptionsType, expected: string | null}>
      */
-    public function formatDisplayNameProvider(): array
+    public static function formatDisplayNameProvider(): array
     {
         return [
             [

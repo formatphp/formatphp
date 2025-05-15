@@ -9,30 +9,30 @@ use FormatPHP\Intl\DisplayNames;
 use FormatPHP\Intl\DisplayNamesOptions;
 use FormatPHP\Intl\Locale;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class DisplayNamesTest extends TestCase
 {
     /**
      * @param "region" | "script" $type
-     *
-     * @dataProvider invalidValueProvider
      */
-    public function testThrowsExceptionForInvalidValue(string $code, string $type): void
+    #[DataProvider('invalidValueProvider')]
+    public function testThrowsExceptionForInvalidValue(string $value, string $type): void
     {
         $locale = new Locale('en-US');
         $options = new DisplayNamesOptions(['type' => $type]);
         $displayNames = new DisplayNames($locale, $options);
 
         $this->expectException(UnableToFormatDisplayNameException::class);
-        $this->expectExceptionMessage("Invalid value \"$code\" for option $type");
+        $this->expectExceptionMessage("Invalid value \"$value\" for option $type");
 
-        $displayNames->of($code);
+        $displayNames->of($value);
     }
 
     /**
      * @return array<array{value: string, type: string}>
      */
-    public function invalidValueProvider(): array
+    public static function invalidValueProvider(): array
     {
         return [
             ['value' => 'A', 'type' => 'region'],

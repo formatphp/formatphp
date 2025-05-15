@@ -6,6 +6,7 @@ namespace FormatPHP\Test\Intl;
 
 use FormatPHP\Intl\DateTimeFormatOptions;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function constant;
 use function json_encode;
@@ -15,12 +16,8 @@ use function json_encode;
  */
 class DateTimeFormatOptionsTest extends TestCase
 {
-    /**
-     * @param string | int $expectedValue
-     *
-     * @dataProvider publicConstantsProvider
-     */
-    public function testPublicConstants(string $constantName, $expectedValue): void
+    #[DataProvider('publicConstantsProvider')]
+    public function testPublicConstants(string $constantName, int | string $expectedValue): void
     {
         $this->assertSame(constant($constantName), $expectedValue);
     }
@@ -28,7 +25,7 @@ class DateTimeFormatOptionsTest extends TestCase
     /**
      * @return array<array{constantName: string, expectedValue: string | int}>
      */
-    public function publicConstantsProvider(): array
+    public static function publicConstantsProvider(): array
     {
         $class = DateTimeFormatOptions::class;
 
@@ -130,9 +127,8 @@ class DateTimeFormatOptionsTest extends TestCase
 
     /**
      * @param OptionsType $options
-     *
-     * @dataProvider constructorOptionsProvider
      */
+    #[DataProvider('constructorOptionsProvider')]
     public function testConstructorOptions(array $options): void
     {
         $formatOptions = new DateTimeFormatOptions($options);
@@ -146,7 +142,7 @@ class DateTimeFormatOptionsTest extends TestCase
     /**
      * @return array<array{options: OptionsType}>
      */
-    public function constructorOptionsProvider(): array
+    public static function constructorOptionsProvider(): array
     {
         return [
             ['options' => []],

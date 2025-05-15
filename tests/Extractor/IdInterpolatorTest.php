@@ -10,12 +10,11 @@ use FormatPHP\Exception\InvalidArgumentException;
 use FormatPHP\Exception\UnableToGenerateMessageIdException;
 use FormatPHP\Extractor\IdInterpolator;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class IdInterpolatorTest extends TestCase
 {
-    /**
-     * @dataProvider generateIdProvider
-     */
+    #[DataProvider('generateIdProvider')]
     public function testGenerateId(DescriptorInterface $descriptor, ?string $pattern, string $expectedId): void
     {
         $idInterpolator = new IdInterpolator();
@@ -30,7 +29,7 @@ class IdInterpolatorTest extends TestCase
     /**
      * @return array<array{descriptor: DescriptorInterface, pattern: string | null, expectedId: string}>
      */
-    public function generateIdProvider(): array
+    public static function generateIdProvider(): array
     {
         return [
             'descriptor has ID' => [

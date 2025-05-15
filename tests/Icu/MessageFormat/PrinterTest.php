@@ -8,12 +8,11 @@ use FormatPHP\Icu\MessageFormat\Parser;
 use FormatPHP\Icu\MessageFormat\Parser\Options;
 use FormatPHP\Icu\MessageFormat\Printer;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class PrinterTest extends TestCase
 {
-    /**
-     * @dataProvider messageProvider
-     */
+    #[DataProvider('messageProvider')]
     public function testPrintAst(string $message, ?Options $options = null): void
     {
         $parser = new Parser($message, $options);
@@ -28,7 +27,7 @@ class PrinterTest extends TestCase
     /**
      * @return array<string, array{message: string, options?: Options}>
      */
-    public function messageProvider(): array
+    public static function messageProvider(): array
     {
         return [
             'basic_argument_1' => ['message' => '{a}'],
@@ -186,7 +185,6 @@ class PrinterTest extends TestCase
             'simple_number_arg_1' => ['message' => 'I have {numCats, number} cats.'],
             'time_arg_skeleton_1' => ['message' => '{0, time, ::h:mm a}'],
             'treat_unicode_nbsp_as_whitespace' => [
-                // phpcs:ignore SlevomatCodingStandard.PHP.RequireNowdoc.RequiredNowdoc
                 'message' => <<<EOD
 
                     {gender, select,

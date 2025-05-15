@@ -13,12 +13,11 @@ use FormatPHP\PseudoLocale\Locale\XxHa;
 use FormatPHP\PseudoLocale\Locale\XxLs;
 use FormatPHP\PseudoLocale\Locale\XxZa;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class AbstractLocaleTest extends TestCase
 {
-    /**
-     * @dataProvider provideLocales
-     */
+    #[DataProvider('provideLocales')]
     public function testConvertThrowsExceptionForParserError(AbstractLocale $locale): void
     {
         $this->expectException(UnableToParseMessageException::class);
@@ -29,7 +28,7 @@ class AbstractLocaleTest extends TestCase
     /**
      * @return array<string, array{locale: AbstractLocale}>
      */
-    public function provideLocales(): array
+    public static function provideLocales(): array
     {
         return [
             'en-XA' => ['locale' => new EnXa()],

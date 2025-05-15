@@ -11,6 +11,7 @@ use FormatPHP\Exception\UnableToProcessFileException;
 use FormatPHP\Exception\UnableToWriteFileException;
 use FormatPHP\Test\TestCase;
 use FormatPHP\Util\FileSystemHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function assert;
 use function file_get_contents;
@@ -134,9 +135,7 @@ class FileSystemHelperTest extends TestCase
         $this->assertNull($file->loadClosureFromScript('/path/to/script.php'));
     }
 
-    /**
-     * @dataProvider loadClosureFromScriptProvider
-     */
+    #[DataProvider('loadClosureFromScriptProvider')]
     public function testLoadClosureFromScript(string $path, bool $expectClosure): void
     {
         $file = new FileSystemHelper();
@@ -152,7 +151,7 @@ class FileSystemHelperTest extends TestCase
     /**
      * @return array<array{path: string, expectClosure: bool}>
      */
-    public function loadClosureFromScriptProvider(): array
+    public static function loadClosureFromScriptProvider(): array
     {
         return [
             [

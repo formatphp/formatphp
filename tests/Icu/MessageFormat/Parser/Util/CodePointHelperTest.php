@@ -7,6 +7,7 @@ namespace FormatPHP\Test\Icu\MessageFormat\Parser\Util;
 use FormatPHP\Icu\MessageFormat\Parser\Exception\InvalidUtf8CodePointException;
 use FormatPHP\Icu\MessageFormat\Parser\Util\CodePointHelper;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function mb_ord;
 use function range;
@@ -23,9 +24,7 @@ class CodePointHelperTest extends TestCase
         $this->codePointHelper = new CodePointHelper();
     }
 
-    /**
-     * @dataProvider isAlphaProvider
-     */
+    #[DataProvider('isAlphaProvider')]
     public function testIsAlpha(int $value, bool $expected): void
     {
         $this->assertSame($expected, $this->codePointHelper->isAlpha($value));
@@ -34,7 +33,7 @@ class CodePointHelperTest extends TestCase
     /**
      * @return non-empty-list<array{int, bool}>
      */
-    public function isAlphaProvider(): array
+    public static function isAlphaProvider(): array
     {
         $values = [];
 
@@ -57,9 +56,7 @@ class CodePointHelperTest extends TestCase
         return $values;
     }
 
-    /**
-     * @dataProvider isAlphaOrSlashProvider
-     */
+    #[DataProvider('isAlphaOrSlashProvider')]
     public function testIsAlphaOrSlash(int $value, bool $expected): void
     {
         $this->assertSame($expected, $this->codePointHelper->isAlphaOrSlash($value));
@@ -68,7 +65,7 @@ class CodePointHelperTest extends TestCase
     /**
      * @return non-empty-list<array{int, bool}>
      */
-    public function isAlphaOrSlashProvider(): array
+    public static function isAlphaOrSlashProvider(): array
     {
         return [
             [mb_ord('a', 'UTF-8'), true],
@@ -83,9 +80,7 @@ class CodePointHelperTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider isWhiteSpaceProvider
-     */
+    #[DataProvider('isWhiteSpaceProvider')]
     public function testIsWhiteSpace(int $value, bool $expected): void
     {
         $this->assertSame($expected, $this->codePointHelper->isWhiteSpace($value));
@@ -94,7 +89,7 @@ class CodePointHelperTest extends TestCase
     /**
      * @return non-empty-list<array{int, bool}>
      */
-    public function isWhiteSpaceProvider(): array
+    public static function isWhiteSpaceProvider(): array
     {
         return [
             [0x0009, true],
@@ -132,9 +127,7 @@ class CodePointHelperTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider isPatternSyntaxProvider
-     */
+    #[DataProvider('isPatternSyntaxProvider')]
     public function testIsPatternSyntax(int $value, bool $expected): void
     {
         $this->assertSame($expected, $this->codePointHelper->isPatternSyntax($value));
@@ -143,7 +136,7 @@ class CodePointHelperTest extends TestCase
     /**
      * @return non-empty-list<array{int, bool}>
      */
-    public function isPatternSyntaxProvider(): array
+    public static function isPatternSyntaxProvider(): array
     {
         $values = [];
 
@@ -158,9 +151,7 @@ class CodePointHelperTest extends TestCase
         return $values;
     }
 
-    /**
-     * @dataProvider isPotentialElementNameCharProvider
-     */
+    #[DataProvider('isPotentialElementNameCharProvider')]
     public function testIsPotentialElementNameChar(int $value, bool $expected): void
     {
         $this->assertSame($expected, $this->codePointHelper->isPotentialElementNameChar($value));
@@ -169,7 +160,7 @@ class CodePointHelperTest extends TestCase
     /**
      * @return non-empty-list<array{int, bool}>
      */
-    public function isPotentialElementNameCharProvider(): array
+    public static function isPotentialElementNameCharProvider(): array
     {
         $values = [];
 

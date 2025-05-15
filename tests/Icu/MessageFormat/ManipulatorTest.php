@@ -8,14 +8,13 @@ use FormatPHP\Icu\MessageFormat\Manipulator;
 use FormatPHP\Icu\MessageFormat\Parser;
 use FormatPHP\Icu\MessageFormat\Printer;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function assert;
 
 class ManipulatorTest extends TestCase
 {
-    /**
-     * @dataProvider messageProvider
-     */
+    #[DataProvider('messageProvider')]
     public function testHoistSelectors(string $message): void
     {
         $parser = new Parser($message);
@@ -34,7 +33,7 @@ class ManipulatorTest extends TestCase
     /**
      * @return array<string, array{message: string}>
      */
-    public function messageProvider(): array
+    public static function messageProvider(): array
     {
         return [
             'should hoist 1 plural' => [

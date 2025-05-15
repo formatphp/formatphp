@@ -8,6 +8,7 @@ use FormatPHP\Icu\MessageFormat\Parser\Error;
 use FormatPHP\Icu\MessageFormat\Parser\Type\Location;
 use FormatPHP\Icu\MessageFormat\Parser\Type\LocationDetails;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use RuntimeException;
 
 /**
@@ -74,9 +75,8 @@ class ErrorTest extends TestCase
 
     /**
      * @param ErrorKind $kind
-     *
-     * @dataProvider provideErrorKind
      */
+    #[DataProvider('provideErrorKind')]
     public function testGetErrorKindName(int $kind, string $expected): void
     {
         $start = new LocationDetails(0, 1, 1);
@@ -91,7 +91,7 @@ class ErrorTest extends TestCase
     /**
      * @return array<array{kind: ErrorKind, expected: string}>
      */
-    public function provideErrorKind(): array
+    public static function provideErrorKind(): array
     {
         return [
             ['kind' => 0, 'expected' => 'OTHER'],

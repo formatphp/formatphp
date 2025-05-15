@@ -10,6 +10,7 @@ use FormatPHP\Intl\Locale;
 use FormatPHP\Intl\NumberFormat;
 use FormatPHP\Intl\NumberFormatOptions;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @phpstan-import-type OptionsType from NumberFormatOptions
@@ -122,13 +123,16 @@ class NumberFormatTest extends TestCase
     }
 
     /**
-     * @param int | float $number
      * @param OptionsType $options
-     *
-     * @dataProvider formatProvider
      */
-    public function testFormat($number, string $locale, array $options, string $expected, string $skeleton): void
-    {
+    #[DataProvider('formatProvider')]
+    public function testFormat(
+        float | int $number,
+        string $locale,
+        array $options,
+        string $expected,
+        string $skeleton,
+    ): void {
         $locale = new Locale($locale);
         $formatOptions = new NumberFormatOptions($options);
         $formatter = new NumberFormat($locale, $formatOptions);
@@ -138,12 +142,10 @@ class NumberFormatTest extends TestCase
     }
 
     /**
-     * @param int | float $value
      * @param array<string, string> $expected
-     *
-     * @dataProvider roundingModeProvider
      */
-    public function testRoundingMode($value, array $expected): void
+    #[DataProvider('roundingModeProvider')]
+    public function testRoundingMode(float | int $value, array $expected): void
     {
         $locale = new Locale('en-US');
 
@@ -166,7 +168,7 @@ class NumberFormatTest extends TestCase
     /**
      * @return array<array{number: int | float, locale: string, options: OptionsType, expected: string, skeleton: string}>
      */
-    public function formatProvider(): array
+    public static function formatProvider(): array
     {
         return [
             [
@@ -847,7 +849,7 @@ class NumberFormatTest extends TestCase
      *
      * @return array<array{value: int | float, expected: array<string, string>}>
      */
-    public function roundingModeProvider(): array
+    public static function roundingModeProvider(): array
     {
         return [
             [

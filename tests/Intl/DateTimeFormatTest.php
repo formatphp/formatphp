@@ -10,6 +10,7 @@ use FormatPHP\Intl\DateTimeFormat;
 use FormatPHP\Intl\DateTimeFormatOptions;
 use FormatPHP\Intl\Locale;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function array_merge;
 use function date_default_timezone_get;
@@ -44,9 +45,8 @@ class DateTimeFormatTest extends TestCase
 
     /**
      * @param OptionsType $options
-     *
-     * @dataProvider formatProvider
      */
+    #[DataProvider('formatProvider')]
     public function testFormat(array $options, string $ko, string $en, string $skeleton, bool $skip = false): void
     {
         if ($skip) {
@@ -84,9 +84,8 @@ class DateTimeFormatTest extends TestCase
 
     /**
      * @param OptionsType $additionalOptions
-     *
-     * @dataProvider formatThrowsExceptionWhenDateStyleOrTimeStyleMixedWithStylePropertyProvider
      */
+    #[DataProvider('formatThrowsExceptionWhenDateStyleOrTimeStyleMixedWithStylePropertyProvider')]
     public function testFormatThrowsExceptionWhenDateStyleOrTimeStyleMixedWithStyleProperty(
         ?string $dateStyle,
         ?string $timeStyle,
@@ -195,7 +194,7 @@ class DateTimeFormatTest extends TestCase
      *
      * @return array<array{options: OptionsType, ko: string, en: string}>
      */
-    public function formatProvider(): array
+    public static function formatProvider(): array
     {
         return [
             [
@@ -620,7 +619,7 @@ class DateTimeFormatTest extends TestCase
     /**
      * @return array<array{dateStyle: string | null, timeStyle: string | null, additionalOptions: OptionsType}>
      */
-    public function formatThrowsExceptionWhenDateStyleOrTimeStyleMixedWithStylePropertyProvider(): array
+    public static function formatThrowsExceptionWhenDateStyleOrTimeStyleMixedWithStylePropertyProvider(): array
     {
         $styleProperties = [
             'era' => 'short',

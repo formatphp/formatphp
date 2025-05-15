@@ -13,6 +13,7 @@ use FormatPHP\Intl\Locale;
 use FormatPHP\MessageCollection;
 use FormatPHP\MessageInterface;
 use FormatPHP\MessageLoader;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function sprintf;
 
@@ -109,9 +110,8 @@ class MessageLoaderTest extends TestCase
 
     /**
      * @param ReaderType $customReader
-     *
-     * @dataProvider provideCustomReader
      */
+    #[DataProvider('provideCustomReader')]
     public function testLoadMessagesWithCustomReader($customReader): void
     {
         $locale = new Locale('ar');
@@ -136,7 +136,7 @@ class MessageLoaderTest extends TestCase
     /**
      * @return mixed[]
      */
-    public function provideCustomReader(): array
+    public static function provideCustomReader(): array
     {
         $customReader = new CustomMessageLoaderReader();
 

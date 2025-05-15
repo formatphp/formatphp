@@ -6,6 +6,7 @@ namespace FormatPHP\Test\Icu\MessageFormat\Parser;
 
 use FormatPHP\Icu\MessageFormat\Parser\NumberSkeletonParser;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function json_encode;
 
@@ -23,9 +24,7 @@ class NumberSkeletonParserTest extends TestCase
         | JSON_UNESCAPED_SLASHES
         | JSON_THROW_ON_ERROR;
 
-    /**
-     * @dataProvider numberSkeletonProvider
-     */
+    #[DataProvider('numberSkeletonProvider')]
     public function testParseNumberSkeleton(string $skeleton): void
     {
         $parser = new NumberSkeletonParser();
@@ -39,7 +38,7 @@ class NumberSkeletonParserTest extends TestCase
     /**
      * @return array<string[]>
      */
-    public function numberSkeletonProvider(): array
+    public static function numberSkeletonProvider(): array
     {
         return [
             ['percent .##'],

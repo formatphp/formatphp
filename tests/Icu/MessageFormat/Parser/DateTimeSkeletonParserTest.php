@@ -6,6 +6,7 @@ namespace FormatPHP\Test\Icu\MessageFormat\Parser;
 
 use FormatPHP\Icu\MessageFormat\Parser\DateTimeSkeletonParser;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function json_encode;
 
@@ -23,9 +24,7 @@ class DateTimeSkeletonParserTest extends TestCase
         | JSON_UNESCAPED_SLASHES
         | JSON_THROW_ON_ERROR;
 
-    /**
-     * @dataProvider dateTimeSkeletonProvider
-     */
+    #[DataProvider('dateTimeSkeletonProvider')]
     public function testParseDateTimeSkeleton(string $skeleton): void
     {
         $parser = new DateTimeSkeletonParser();
@@ -37,7 +36,7 @@ class DateTimeSkeletonParserTest extends TestCase
     /**
      * @return array<string[]>
      */
-    public function dateTimeSkeletonProvider(): array
+    public static function dateTimeSkeletonProvider(): array
     {
         return [
             ["yyyy.MM.dd G 'at' HH:mm:ss zzzz"],

@@ -218,7 +218,7 @@ class DescriptorCollectorVisitor extends NodeVisitorAbstract
         return $properties;
     }
 
-    private function isValidDescriptorItem(?Node\Expr\ArrayItem $item): bool
+    private function isValidDescriptorItem(?Node\ArrayItem $item): bool
     {
         return $item !== null
             && $item->key instanceof Node\Scalar\String_

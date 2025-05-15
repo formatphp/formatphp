@@ -610,7 +610,7 @@ class MessageExtractorTest extends TestCase
                 . 'encountered Expr_Variable in ' . __DIR__
                 . '/Parser/Descriptor/fixtures/php-parser-10.php on line 6',
             'The descriptor must not contain values other than string literals; '
-                . 'encountered Scalar_Encapsed in ' . __DIR__
+                . 'encountered Scalar_InterpolatedString in ' . __DIR__
                 . '/Parser/Descriptor/fixtures/php-parser-10.php on line 12',
             'Missing "defaultMessage" in "{{#formatMessage |idWithoutMessage}}{{/formatMessage}}" in '
                 . __DIR__ . '/Parser/Descriptor/fixtures/custom-parser-01.template on line 0',
@@ -702,7 +702,7 @@ class MessageExtractorTest extends TestCase
             . 'encountered Expr_Variable in ' . __DIR__
             . '/Parser/Descriptor/fixtures/php-parser-10.php on line 6',
             'The descriptor must not contain values other than string literals; '
-            . 'encountered Scalar_Encapsed in ' . __DIR__
+            . 'encountered Scalar_InterpolatedString in ' . __DIR__
             . '/Parser/Descriptor/fixtures/php-parser-10.php on line 12',
             'Missing "defaultMessage" in "{{#formatMessage |idWithoutMessage}}{{/formatMessage}}" in '
             . __DIR__ . '/Parser/Descriptor/fixtures/custom-parser-01.template on line 0',
@@ -896,7 +896,11 @@ class MessageExtractorTest extends TestCase
             ],
             __DIR__ . '/Parser/Descriptor/fixtures/php-parser-10.php' => [
                 [6, 'The descriptor must not contain values other than string literals; encountered Expr_Variable'],
-                [12, 'The descriptor must not contain values other than string literals; encountered Scalar_Encapsed'],
+                [
+                    12,
+                    'The descriptor must not contain values other than string literals; '
+                    . 'encountered Scalar_InterpolatedString',
+                ],
             ],
             __DIR__ . '/../fixtures/invalid-message.php' => [
                 [4, 'Syntax Error: INVALID_TAG in message "This is a default <a href="#foo">message</a>"'],

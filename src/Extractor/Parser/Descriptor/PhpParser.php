@@ -34,12 +34,11 @@ use FormatPHP\Extractor\Parser\ParserErrorCollection;
 use FormatPHP\Icu\MessageFormat\Parser;
 use FormatPHP\Util\FileSystemHelper;
 use LogicException;
-use PhpParser\Lexer;
-use PhpParser\Lexer\Emulative;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\CloningVisitor;
-use PhpParser\Parser\Php7 as Php7Parser;
+use PhpParser\Parser as NikicParser;
+use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard as PhpPrinter;
 
 use function assert;
@@ -56,18 +55,6 @@ use const PATHINFO_EXTENSION;
 class PhpParser implements DescriptorParserInterface
 {
     private const PHP_PATH_EXTENSIONS = ['php', 'phtml'];
-
-    private const LEXER_OPTIONS = [
-        'usedAttributes' => [
-            'comments',
-            'endFilePos',
-            'endLine',
-            'endTokenPos',
-            'startFilePos',
-            'startLine',
-            'startTokenPos',
-        ],
-    ];
 
     private FileSystemHelper $fileSystemHelper;
 
@@ -96,8 +83,7 @@ class PhpParser implements DescriptorParserInterface
             return new DescriptorCollection();
         }
 
-        $lexer = new Emulative(self::LEXER_OPTIONS);
-        $parser = new Php7Parser($lexer);
+        $parser = (new ParserFactory())->createForNewestSupportedVersion();
         $statements = $parser->parse($fileContents);
 
         $descriptorCollector = new DescriptorCollectorVisitor(
@@ -117,7 +103,7 @@ class PhpParser implements DescriptorParserInterface
         assert($statements !== null);
 
         if ($options->addGeneratedIdsToSourceCode) {
-            $this->traverseWithUpdate($filePath, $statements, $lexer, $descriptorCollector, $pragmaCollector);
+            $this->traverseWithUpdate($filePath, $statements, $parser, $descriptorCollector, $pragmaCollector);
         } else {
             $this->traverseWithoutUpdate($statements, $descriptorCollector, $pragmaCollector);
         }
@@ -152,14 +138,13 @@ class PhpParser implements DescriptorParserInterface
     private function traverseWithUpdate(
         string $filePath,
         array $originalStatements,
-        Lexer $lexer,
+        NikicParser $parser,
         DescriptorCollectorVisitor $descriptorCollector,
         ?PragmaCollectorVisitor $pragmaCollector
     ): void {
-        $originalTokens = $lexer->getTokens();
+        $originalTokens = $parser->getTokens();
 
-        $cloningTraverser = new NodeTraverser();
-        $cloningTraverser->addVisitor(new CloningVisitor());
+        $cloningTraverser = new NodeTraverser(new CloningVisitor());
         $clonedStatements = $cloningTraverser->traverse($originalStatements);
 
         $modifyingTraverser = new NodeTraverser();

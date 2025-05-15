@@ -24,6 +24,7 @@ use FormatPHP\MessageCollection;
 use FormatPHP\Test\TestCase;
 use FormatPHP\Util\FileSystemHelper;
 use FormatPHP\Util\FormatHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function getenv;
 use function sprintf;
@@ -39,9 +40,8 @@ class FormatHelperTest extends TestCase
 
     /**
      * @param class-string $expectedType
-     *
-     * @dataProvider validReaderProvider
      */
+    #[DataProvider('validReaderProvider')]
     public function testGetReader(string $reader, string $expectedType): void
     {
         $helper = new FormatHelper(new FileSystemHelper());
@@ -52,7 +52,7 @@ class FormatHelperTest extends TestCase
     /**
      * @return array<string, array{reader: string, expectedType: string}>
      */
-    public function validReaderProvider(): array
+    public static function validReaderProvider(): array
     {
         return [
             'simple' => [
@@ -93,9 +93,7 @@ class FormatHelperTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidReaderProvider
-     */
+    #[DataProvider('invalidReaderProvider')]
     public function testInvalidReader(string $reader, bool $shouldSkip): void
     {
         if ($shouldSkip) {
@@ -120,7 +118,7 @@ class FormatHelperTest extends TestCase
     /**
      * @return array<array{reader: string}>
      */
-    public function invalidReaderProvider(): array
+    public static function invalidReaderProvider(): array
     {
         return [
             'non-existent class' => [
@@ -152,9 +150,8 @@ class FormatHelperTest extends TestCase
 
     /**
      * @param class-string $expectedType
-     *
-     * @dataProvider validWriterProvider
      */
+    #[DataProvider('validWriterProvider')]
     public function testGetWriter(string $writer, string $expectedType): void
     {
         $helper = new FormatHelper(new FileSystemHelper());
@@ -165,7 +162,7 @@ class FormatHelperTest extends TestCase
     /**
      * @return mixed[]
      */
-    public function validWriterProvider(): array
+    public static function validWriterProvider(): array
     {
         return [
             'simple' => [
@@ -206,9 +203,7 @@ class FormatHelperTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidWriterProvider
-     */
+    #[DataProvider('invalidWriterProvider')]
     public function testInvalidWriter(string $writer, bool $shouldSkip): void
     {
         if ($shouldSkip) {
@@ -232,37 +227,35 @@ class FormatHelperTest extends TestCase
     }
 
     /**
-     * @return array<array{reader: string}>
+     * @return array<array{writer: string}>
      */
-    public function invalidWriterProvider(): array
+    public static function invalidWriterProvider(): array
     {
         return [
             'not a closure' => [
-                'reader' => __DIR__ . '/fixtures/writer-closure-invalid-01.php',
+                'writer' => __DIR__ . '/fixtures/writer-closure-invalid-01.php',
                 'shouldSkip' => false,
             ],
             'not enough parameters' => [
-                'reader' => __DIR__ . '/fixtures/writer-closure-invalid-02.php',
+                'writer' => __DIR__ . '/fixtures/writer-closure-invalid-02.php',
                 'shouldSkip' => false,
             ],
             'first param is not DescriptorCollection' => [
-                'reader' => __DIR__ . '/fixtures/writer-closure-invalid-03.php',
+                'writer' => __DIR__ . '/fixtures/writer-closure-invalid-03.php',
                 'shouldSkip' => (fn (): bool => (bool) getenv('GITHUB_ACTIONS'))(),
             ],
             'second param is not MessageExtractorOptions' => [
-                'reader' => __DIR__ . '/fixtures/writer-closure-invalid-04.php',
+                'writer' => __DIR__ . '/fixtures/writer-closure-invalid-04.php',
                 'shouldSkip' => (fn (): bool => (bool) getenv('GITHUB_ACTIONS'))(),
             ],
             'return type is not array' => [
-                'reader' => __DIR__ . '/fixtures/writer-closure-invalid-05.php',
+                'writer' => __DIR__ . '/fixtures/writer-closure-invalid-05.php',
                 'shouldSkip' => (fn (): bool => (bool) getenv('GITHUB_ACTIONS'))(),
             ],
         ];
     }
 
-    /**
-     * @dataProvider validateWriterCallableProvider
-     */
+    #[DataProvider('validateWriterCallableProvider')]
     public function testValidateWriterCallable(callable $writer): void
     {
         $helper = new FormatHelper(new FileSystemHelper());
@@ -273,7 +266,7 @@ class FormatHelperTest extends TestCase
     /**
      * @return mixed[]
      */
-    public function validateWriterCallableProvider(): array
+    public static function validateWriterCallableProvider(): array
     {
         $writerInstance = new ChromeWriter();
 

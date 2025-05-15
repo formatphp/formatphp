@@ -385,7 +385,7 @@ class PhpParserTest extends TestCase
                     . 'encountered Expr_Variable on line 6 in '
                     . __DIR__ . '/fixtures/php-parser-10.php',
                 'The descriptor must not contain values other than string literals; '
-                    . 'encountered Scalar_Encapsed on line 12 in '
+                    . 'encountered Scalar_InterpolatedString on line 12 in '
                     . __DIR__ . '/fixtures/php-parser-10.php',
             ],
             $receivedErrors,

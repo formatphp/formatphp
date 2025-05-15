@@ -10,15 +10,14 @@ use FormatPHP\PseudoLocale\ConverterOptions;
 use FormatPHP\Test\TestCase;
 use FormatPHP\Util\FileSystemHelper;
 use FormatPHP\Util\FormatHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 use function json_decode;
 
 class ConverterTest extends TestCase
 {
-    /**
-     * @dataProvider providePseudoLocales
-     */
+    #[DataProvider('providePseudoLocales')]
     public function testConvert(string $file, string $pseudoLocale, ConverterOptions $options): void
     {
         $outFile = $options->outFile ?? 'php://output';
@@ -60,7 +59,7 @@ class ConverterTest extends TestCase
     /**
      * @return array<string, array{file: string, pseudoLocale: string}>
      */
-    public function providePseudoLocales(): array
+    public static function providePseudoLocales(): array
     {
         return [
             'pseudo locale en-XA' => [

@@ -8,6 +8,7 @@ use FormatPHP\Icu\MessageFormat\Parser;
 use FormatPHP\Icu\MessageFormat\Parser\Exception\IllegalParserUsageException;
 use FormatPHP\Icu\MessageFormat\Parser\Options;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function json_encode;
 
@@ -25,9 +26,7 @@ class ParserTest extends TestCase
         | JSON_UNESCAPED_SLASHES
         | JSON_THROW_ON_ERROR;
 
-    /**
-     * @dataProvider parserProvider
-     */
+    #[DataProvider('parserProvider')]
     public function testParser(string $message, ?Options $options = null): void
     {
         $parser = new Parser($message, $options);
@@ -36,9 +35,7 @@ class ParserTest extends TestCase
         $this->assertMatchesJsonSnapshot($parsed);
     }
 
-    /**
-     * @dataProvider numberSkeletonProvider
-     */
+    #[DataProvider('numberSkeletonProvider')]
     public function testNumberSkeleton(string $skeleton): void
     {
         $message = "{0, number, ::$skeleton}";
@@ -73,7 +70,7 @@ class ParserTest extends TestCase
      *
      * @return array<string, array{message: string, options?: Options | null}>
      */
-    public function parserProvider(): array
+    public static function parserProvider(): array
     {
         return [
             'basic_argument_1' => ['message' => '{a}'],
@@ -238,8 +235,8 @@ class ParserTest extends TestCase
             'quoted_string_3' => ['message' => "aaa'{'"],
             'quoted_string_4' => ['message' => "aaa'}'"],
             'quoted_string_5' => [
-                // See: https://unicode-org.github.io/icu/userguide/format_parse/messages/#quotingescaping
-                // See: https://github.com/formatjs/formatjs/issues/97
+                                // See: https://unicode-org.github.io/icu/userguide/format_parse/messages/#quotingescaping
+                                // See: https://github.com/formatjs/formatjs/issues/97
                 'message' => "This '{isn''t}' obvious",
             ],
             'quoted_tag_1' => ['message' => "'<a>"],
@@ -275,7 +272,7 @@ class ParserTest extends TestCase
             'simple_number_arg_1' => ['message' => 'I have {numCats, number} cats.'],
             'time_arg_skeleton_1' => ['message' => '{0, time, ::h:mm a}'],
             'treat_unicode_nbsp_as_whitespace' => [
-                // phpcs:ignore SlevomatCodingStandard.PHP.RequireNowdoc.RequiredNowdoc
+                            // phpcs:ignore SlevomatCodingStandard.PHP.RequireNowdoc.RequiredNowdoc
                 'message' => <<<EOD
 
                     {gender, select,
@@ -312,7 +309,7 @@ class ParserTest extends TestCase
     /**
      * @return array<string, string[]>
      */
-    public function numberSkeletonProvider(): array
+    public static function numberSkeletonProvider(): array
     {
         return [
             'number_skeleton_1' => ['compact-short currency/GBP'],

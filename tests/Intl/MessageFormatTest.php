@@ -18,6 +18,7 @@ use FormatPHP\MessageCollection;
 use FormatPHP\MessageInterface;
 use FormatPHP\Test\TestCase;
 use FormatPHP\Util\DescriptorIdBuilder;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @phpstan-import-type MessageValuesType from FormatterInterface
@@ -69,9 +70,8 @@ class MessageFormatTest extends TestCase
 
     /**
      * @param array<array-key, int | float | string> $replacements
-     *
-     * @dataProvider formatProvider
      */
+    #[DataProvider('formatProvider')]
     public function testFormat(
         Locale $locale,
         DescriptorInterface $descriptor,
@@ -92,7 +92,7 @@ class MessageFormatTest extends TestCase
     /**
      * @return mixed[]
      */
-    public function formatProvider(): array
+    public static function formatProvider(): array
     {
         $localeEn = new Locale('en');
         $localeFoo = new Locale('foo');

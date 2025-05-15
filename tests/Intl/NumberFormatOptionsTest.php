@@ -6,6 +6,7 @@ namespace FormatPHP\Test\Intl;
 
 use FormatPHP\Intl\NumberFormatOptions;
 use FormatPHP\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function constant;
 use function json_encode;
@@ -15,9 +16,7 @@ use function json_encode;
  */
 class NumberFormatOptionsTest extends TestCase
 {
-    /**
-     * @dataProvider publicConstantsProvider
-     */
+    #[DataProvider('publicConstantsProvider')]
     public function testPublicConstants(string $constantName, string $expectedValue): void
     {
         $this->assertSame(constant($constantName), $expectedValue);
@@ -25,9 +24,8 @@ class NumberFormatOptionsTest extends TestCase
 
     /**
      * @param OptionsType $options
-     *
-     * @dataProvider constructorOptionsProvider
      */
+    #[DataProvider('constructorOptionsProvider')]
     public function testConstructorOptions(array $options): void
     {
         $formatOptions = new NumberFormatOptions($options);
@@ -41,7 +39,7 @@ class NumberFormatOptionsTest extends TestCase
     /**
      * @return array<array{constantName: string, expectedValue: string}>
      */
-    public function publicConstantsProvider(): array
+    public static function publicConstantsProvider(): array
     {
         $class = NumberFormatOptions::class;
 
@@ -236,7 +234,7 @@ class NumberFormatOptionsTest extends TestCase
     /**
      * @return array<array{options: OptionsType}>
      */
-    public function constructorOptionsProvider(): array
+    public static function constructorOptionsProvider(): array
     {
         return [
             ['options' => []],
