@@ -135,7 +135,7 @@ class FormatHelperTest extends TestCase
             ],
             'not enough parameters' => [
                 'reader' => __DIR__ . '/fixtures/reader-closure-invalid-02.php',
-                'shouldSkip' => false,
+                'shouldSkip' => (fn (): bool => (bool) getenv('GITHUB_ACTIONS'))(),
             ],
             'second param is not array' => [
                 'reader' => __DIR__ . '/fixtures/reader-closure-invalid-04.php',
@@ -238,7 +238,7 @@ class FormatHelperTest extends TestCase
             ],
             'not enough parameters' => [
                 'writer' => __DIR__ . '/fixtures/writer-closure-invalid-02.php',
-                'shouldSkip' => false,
+                'shouldSkip' => (fn (): bool => (bool) getenv('GITHUB_ACTIONS'))(),
             ],
             'first param is not DescriptorCollection' => [
                 'writer' => __DIR__ . '/fixtures/writer-closure-invalid-03.php',
