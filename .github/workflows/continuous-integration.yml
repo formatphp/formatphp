@@ -1,6 +1,6 @@
 # GitHub Actions Documentation: https://docs.github.com/en/actions
 
-name: "build"
+name: "Continuous Integration"
 
 on:
   push:
@@ -27,17 +27,17 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout repository"
-        uses: "actions/checkout@v4.2.2"
+        uses: "actions/checkout@v4"
 
       - name: "Install PHP"
-        uses: "shivammathur/setup-php@2.33.0"
+        uses: "shivammathur/setup-php@v2"
         with:
-          php-version: "8.3"
-          extensions: "intl-73.2"
+          php-version: "8.4"
+          extensions: "intl-76.1"
           coverage: "none"
 
       - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@3.1.0"
+        uses: "ramsey/composer-install@v3"
 
       - name: "Check syntax (php-parallel-lint)"
         run: "composer dev:lint:syntax"
@@ -50,17 +50,17 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout repository"
-        uses: "actions/checkout@v4.2.2"
+        uses: "actions/checkout@v4"
 
       - name: "Install PHP"
-        uses: "shivammathur/setup-php@2.33.0"
+        uses: "shivammathur/setup-php@v2"
         with:
-          php-version: "8.3"
-          extensions: "intl-73.2"
+          php-version: "8.4"
+          extensions: "intl-76.1"
           coverage: "none"
 
       - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@3.1.0"
+        uses: "ramsey/composer-install@v3"
 
       - name: "Statically analyze code (PHPStan)"
         run: "composer dev:analyze:phpstan"
@@ -71,24 +71,33 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout repository"
-        uses: "actions/checkout@v4.2.2"
+        uses: "actions/checkout@v4"
 
       - name: "Install PHP"
-        uses: "shivammathur/setup-php@2.33.0"
+        uses: "shivammathur/setup-php@v2"
         with:
-          php-version: "8.3"
-          extensions: "intl-73.2"
-          coverage: "pcov"
-          ini-values: "memory_limit=-1"
+          php-version: "8.4"
+          extensions: "intl-76.1"
+          coverage: "xdebug"
 
       - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@3.1.0"
+        uses: "ramsey/composer-install@v3"
 
       - name: "Run unit tests and generate coverage report (PHPUnit)"
         run: "composer dev:test:coverage:ci"
 
       - name: "Publish coverage report to Codecov"
-        uses: "codecov/codecov-action@v5.4.2"
+        uses: "codecov/codecov-action@v5"
+        with:
+          token: "${{ secrets.CODECOV_TOKEN }}"
+
+      - name: "Upload test results to Codecov"
+        if: ${{ !cancelled() }}
+        uses: "codecov/test-results-action@v1"
+        with:
+          token: "${{ secrets.CODECOV_TOKEN }}"
+          disable_search: true
+          file: "./build/junit.xml"
 
   unit-tests:
     name: "Unit tests"
@@ -99,25 +108,28 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "7.4"
-          - "8.0"
-          - "8.1"
           - "8.2"
           - "8.3"
+          - "8.4"
+        dependencies:
+          - "lowest"
+          - "highest"
 
     steps:
       - name: "Checkout repository"
-        uses: "actions/checkout@v4.2.2"
+        uses: "actions/checkout@v4"
 
       - name: "Install PHP"
-        uses: "shivammathur/setup-php@2.33.0"
+        uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-version }}"
-          extensions: "intl-73.2"
+          extensions: "intl-76.1"
           coverage: "none"
 
       - name: "Install dependencies (Composer)"
-        uses: "ramsey/composer-install@3.1.0"
+        uses: "ramsey/composer-install@v3"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
 
       - name: "Run unit tests (PHPUnit)"
         run: "composer dev:test:unit"
