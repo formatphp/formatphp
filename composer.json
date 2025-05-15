@@ -53,6 +53,9 @@
         "spatie/phpunit-snapshot-assertions": "^4.2",
         "vimeo/psalm": "^5.15"
     },
+    "replace": {
+        "skillshare/formatphp": "<=1.0.2"
+    },
     "suggest": {
         "mdwheele/zalgo": "Zalgo commands you install mdwheele/zalgo for Zalgo pseudo-locale support!"
     },
