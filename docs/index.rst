@@ -4,7 +4,7 @@
 FormatPHP Manual
 ================
 
-For `skillshare/formatphp <https://github.com/skillshare/formatphp>`_ |version|. Updated on |today|.
+For `formatphp/formatphp <https://github.com/formatphp/formatphp>`_ |version|. Updated on |today|.
 
 This work is licensed under the `Creative Commons Attribution 4.0 International
 <https://creativecommons.org/licenses/by/4.0/>`_ license.

@@ -1,5 +1,5 @@
 {
-    "name": "skillshare/formatphp",
+    "name": "formatphp/formatphp",
     "description": "Internationalize PHP apps. This library provides an API to format dates, numbers, and strings, including pluralization and handling translations.",
     "license": "MIT",
     "type": "library",
@@ -73,10 +73,10 @@
     ],
     "config": {
         "allow-plugins": {
-            "phpstan/extension-installer": true,
+            "captainhook/plugin-composer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "ergebnis/composer-normalize": true,
-            "captainhook/plugin-composer": true,
+            "phpstan/extension-installer": true,
             "ramsey/composer-repl": true
         },
         "sort-packages": true

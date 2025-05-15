@@ -1,19 +1,17 @@
 <h1 align="center">FormatPHP</h1>
 
 <p align="center">
-    <a href="https://github.com/skillshare/formatphp"><img src="http://img.shields.io/badge/source-skillshare/formatphp-blue.svg?style=flat-square" alt="Source Code"></a>
-    <a href="https://packagist.org/packages/skillshare/formatphp"><img src="https://img.shields.io/packagist/v/skillshare/formatphp.svg?style=flat-square&label=release" alt="Download Package"></a>
-    <a href="https://php.net"><img src="https://img.shields.io/packagist/php-v/skillshare/formatphp.svg?style=flat-square&colorB=%238892BF" alt="PHP Programming Language"></a>
-    <a href="https://github.com/skillshare/formatphp/blob/main/LICENSE"><img src="https://img.shields.io/packagist/l/skillshare/formatphp.svg?style=flat-square&colorB=darkcyan" alt="Read License"></a>
-    <a href="https://github.com/skillshare/formatphp/actions/workflows/continuous-integration.yml"><img src="https://img.shields.io/github/actions/workflow/status/skillshare/formatphp/continuous-integration.yml?branch=main&style=flat-square&logo=github" alt="Build Status"></a>
-    <a href="https://codecov.io/gh/skillshare/formatphp"><img src="https://img.shields.io/codecov/c/gh/skillshare/formatphp?label=codecov&logo=codecov&style=flat-square" alt="Codecov Code Coverage"></a>
-    <a href="https://shepherd.dev/github/skillshare/formatphp"><img src="https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fshepherd.dev%2Fgithub%2Fskillshare%2Fformatphp%2Fcoverage" alt="Psalm Type Coverage"></a>
+    <strong>A library to help internationalize PHP apps.</strong>
 </p>
 
 <p align="center">
-    <strong>A library to help internationalize PHP apps.</strong>
-  <br />
-  <sub>Made with ❤️ by <a href="https://skillshare.com">Skillshare Engineering</a></sub>
+    <a href="https://github.com/formatphp/formatphp"><img src="http://img.shields.io/badge/source-formatphp/formatphp-blue.svg?style=flat-square" alt="Source Code"></a>
+    <a href="https://packagist.org/packages/formatphp/formatphp"><img src="https://img.shields.io/packagist/v/formatphp/formatphp.svg?style=flat-square&label=release" alt="Download Package"></a>
+    <a href="https://php.net"><img src="https://img.shields.io/packagist/php-v/formatphp/formatphp.svg?style=flat-square&colorB=%238892BF" alt="PHP Programming Language"></a>
+    <a href="https://github.com/formatphp/formatphp/blob/main/LICENSE"><img src="https://img.shields.io/packagist/l/formatphp/formatphp.svg?style=flat-square&colorB=darkcyan" alt="Read License"></a>
+    <a href="https://github.com/formatphp/formatphp/actions/workflows/continuous-integration.yml"><img src="https://img.shields.io/github/actions/workflow/status/formatphp/formatphp/continuous-integration.yml?branch=main&style=flat-square&logo=github" alt="Build Status"></a>
+    <a href="https://codecov.io/gh/formatphp/formatphp"><img src="https://img.shields.io/codecov/c/gh/formatphp/formatphp?label=codecov&logo=codecov&style=flat-square" alt="Codecov Code Coverage"></a>
+    <a href="https://shepherd.dev/github/formatphp/formatphp"><img src="https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fshepherd.dev%2Fgithub%2Fformatphp%2Fformatphp%2Fcoverage" alt="Psalm Type Coverage"></a>
 </p>
 
 ## About
@@ -35,7 +33,7 @@ uphold this code.
 Install this package as a dependency using [Composer](https://getcomposer.org).
 
 ``` bash
-composer require skillshare/formatphp
+composer require formatphp/formatphp
 ```
 
 ## Usage
@@ -57,6 +55,7 @@ security issue in software that is maintained in this repository, please read
 
 ## Copyright and License
 
-The skillshare/formatphp library is copyright © [Skillshare, Inc.](https://www.skillshare.com)
-and licensed for use under the terms of the
-MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
+FormatPHP is copyright © [Skillshare, Inc.](https://www.skillshare.com) and
+[FormatPHP Contributors](https://formatphp.dev) and licensed for use under the
+terms of the MIT License (MIT). Please see [LICENSE](LICENSE) for more
+information.

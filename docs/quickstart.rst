@@ -38,7 +38,7 @@ FormatPHP to your project dependencies:
 
 .. code-block:: bash
 
-    composer require skillshare/formatphp
+    composer require formatphp/formatphp
 
 Using FormatPHP
 ###############

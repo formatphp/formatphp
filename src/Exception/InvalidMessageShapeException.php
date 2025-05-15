@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This file is part of skillshare/formatphp
+ * This file is part of formatphp/formatphp
  *
- * skillshare/formatphp is open source software: you can distribute
+ * formatphp/formatphp is open source software: you can distribute
  * it and/or modify it under the terms of the MIT License
  * (the "License"). You may not use this file except in
  * compliance with the License.
@@ -15,6 +15,7 @@
  * permissions and limitations under the License.
  *
  * @copyright Copyright (c) Skillshare, Inc. <https://www.skillshare.com>
+ * @copyright Copyright (c) FormatPHP Contributors <https://formatphp.dev>
  * @license https://opensource.org/licenses/MIT MIT License
  */
 

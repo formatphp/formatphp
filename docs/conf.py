@@ -33,13 +33,13 @@ def get_version():
 # -- Project information -----------------------------------------------------
 
 project = 'FormatPHP'
-copyright = '2021-{year}, Skillshare, Inc'.format(year = datetime.date.today().strftime('%Y'))
-author = 'Skillshare, Inc'
+copyright = '2021-%Y, Skillshare, Inc and FormatPHP Contributors'
+author = 'FormatPHP Contributors'
 
 version = get_version().strip()
 release = version
 
-today = datetime.date.today().strftime('%Y-%m-%d')
+today_fmt = '%Y-%m-%d'
 
 
 # -- General configuration ---------------------------------------------------
@@ -50,6 +50,11 @@ highlight_options = {
     'php': {'startinline': True},
     'php-annotations': {'startinline': True},
 }
+
+current_year = datetime.date.today().strftime('%Y')
+rst_prolog = """
+.. |current_year| replace:: {0}
+""".format(current_year)
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -91,8 +96,6 @@ html_css_files = [
     'css/custom.css',
 ]
 
-html_logo = "skillshare-logo.svg"
-
 html_title = "FormatPHP %s Manual" % get_version()
 html_show_sphinx = False
 
@@ -100,7 +103,7 @@ htmlhelp_basename = 'formatphp-doc'
 
 html_context = {
     "display_github": True,
-    "github_user": "skillshare",
+    "github_user": "formatphp",
     "github_repo": "formatphp",
     "github_version": version,
     "conf_py_path": "/docs/",

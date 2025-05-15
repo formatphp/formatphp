@@ -29,9 +29,9 @@ contribution of external security researchers.
 If you believe you've found a security issue in software that is maintained in
 this repository, we encourage you to notify us.
 
-| Version | In scope | Source code |
-| ------- | :------: | ----------- |
-| latest  | ✅        | https://github.com/skillshare/formatphp |
+| Version | In scope | Source code                            |
+| ------- | :------: |----------------------------------------|
+| latest  | ✅        | https://github.com/formatphp/formatphp |
 
 ## How to Submit a Report
 
@@ -43,10 +43,8 @@ this repository, we encourage you to notify us.
     may send you encrypted messages.
 -->
 
-To submit a vulnerability report, please read our
-[security.txt](https://www.skillshare.com/.well-known/security.txt) or contact
-us at responsibledisclosure@skillshare.com. Your submission will be reviewed and
-validated by a member of our team.
+To submit a vulnerability report, please contact us at security@formatphp.dev.
+Your submission will be reviewed and validated by a member of our team.
 
 ## Safe Harbor
 
