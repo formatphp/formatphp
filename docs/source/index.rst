@@ -1,16 +1,8 @@
 .. _index:
 
-================
-FormatPHP Manual
-================
-
-For `formatphp/formatphp <https://github.com/formatphp/formatphp>`_ |version|. Updated on |today|.
-
-This work is licensed under the `Creative Commons Attribution 4.0 International
-<https://creativecommons.org/licenses/by/4.0/>`_ license.
-
-Welcome!
---------
+=========
+FormatPHP
+=========
 
 Inspired by `FormatJS`_ and `ECMAScript 2023 Internationalization API (ECMA-402)`_,
 FormatPHP provides an API to format dates, numbers, and strings, including

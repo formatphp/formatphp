@@ -26,5 +26,5 @@ make html
 Then, to view the docs after building them:
 
 ``` bash
-open _build/html/index.html
+open build/html/index.html
 ```
