@@ -26,18 +26,18 @@ namespace FormatPHP\Intl;
 /**
  * Configuration options for the locale identifier
  *
- * @psalm-import-type CalendarType from DateTimeFormatOptions
- * @psalm-import-type HourType from DateTimeFormatOptions
- * @psalm-import-type NumeralType from NumberFormatOptions
- * @psalm-type CaseFirstType = "upper" | "lower" | "false"
- * @psalm-type CollationType = "big5han" | "compat" | "dict" | "direct" | "ducet" | "emoji" | "eor" | "gb2312" | "phonebk" | "phonetic" | "pinyin" | "reformed" | "search" | "searchjl" | "standard" | "stroke" | "trad" | "unihan" | "zhuyin" | string
+ * @phpstan-import-type CalendarType from DateTimeFormatOptions
+ * @phpstan-import-type HourType from DateTimeFormatOptions
+ * @phpstan-import-type NumeralType from NumberFormatOptions
+ * @phpstan-type CaseFirstType "upper" | "lower" | "false"
+ * @phpstan-type CollationType "big5han" | "compat" | "dict" | "direct" | "ducet" | "emoji" | "eor" | "gb2312" | "phonebk" | "phonetic" | "pinyin" | "reformed" | "search" | "searchjl" | "standard" | "stroke" | "trad" | "unihan" | "zhuyin" | string
  */
 class LocaleOptions
 {
     /**
      * The locale's calendar era
      *
-     * @psalm-var CalendarType | null
+     * @var CalendarType | null
      */
     public ?string $calendar = null;
 
@@ -45,14 +45,14 @@ class LocaleOptions
      * Whether case should be accounted for in the locale's collation rules
      * (i.e. `"upper"`, `"lower"`, or `"false"`)
      *
-     * @psalm-var CaseFirstType | null
+     * @var CaseFirstType | null
      */
     public ?string $caseFirst = null;
 
     /**
      * The locale's collation type
      *
-     * @psalm-var CollationType | null
+     * @var CollationType | null
      */
     public ?string $collation = null;
 
@@ -60,7 +60,7 @@ class LocaleOptions
      * The locale's time-keeping convention (i.e., `"h11"`, `"h12"`, `"h23"`,
      * or `"h24"`)
      *
-     * @psalm-var HourType | null
+     * @var HourType | null
      */
     public ?string $hourCycle = null;
 
@@ -72,7 +72,7 @@ class LocaleOptions
     /**
      * The locale's numeral system
      *
-     * @psalm-var NumeralType | null
+     * @var NumeralType | null
      */
     public ?string $numberingSystem = null;
 
@@ -104,9 +104,6 @@ class LocaleOptions
      *     handling for numeric strings
      * @param string | null $region The locale's region
      * @param string | null $script The locale's script used for writing
-     *
-     * @psalm-param "upper" | "lower" | "false" | null $caseFirst
-     * @psalm-param "h11" | "h12" | "h23" | "h24" | null $hourCycle
      */
     public function __construct(
         ?string $calendar = null,

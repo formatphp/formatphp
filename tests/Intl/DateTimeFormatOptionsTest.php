@@ -11,7 +11,7 @@ use function constant;
 use function json_encode;
 
 /**
- * @psalm-import-type OptionsType from DateTimeFormatOptions
+ * @phpstan-import-type OptionsType from DateTimeFormatOptions
  */
 class DateTimeFormatOptionsTest extends TestCase
 {
@@ -129,7 +129,8 @@ class DateTimeFormatOptionsTest extends TestCase
     }
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
+     *
      * @dataProvider constructorOptionsProvider
      */
     public function testConstructorOptions(array $options): void

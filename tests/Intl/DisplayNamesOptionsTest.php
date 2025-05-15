@@ -11,7 +11,7 @@ use function constant;
 use function json_encode;
 
 /**
- * @psalm-import-type OptionsType from DisplayNamesOptions
+ * @phpstan-import-type OptionsType from DisplayNamesOptions
  */
 class DisplayNamesOptionsTest extends TestCase
 {
@@ -89,7 +89,8 @@ class DisplayNamesOptionsTest extends TestCase
     }
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
+     *
      * @dataProvider constructorOptionsProvider
      */
     public function testConstructorOptions(array $options): void

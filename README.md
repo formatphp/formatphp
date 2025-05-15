@@ -11,7 +11,6 @@
     <a href="https://github.com/formatphp/formatphp/blob/main/LICENSE"><img src="https://img.shields.io/packagist/l/formatphp/formatphp.svg?style=flat-square&colorB=darkcyan" alt="Read License"></a>
     <a href="https://github.com/formatphp/formatphp/actions/workflows/continuous-integration.yml"><img src="https://img.shields.io/github/actions/workflow/status/formatphp/formatphp/continuous-integration.yml?branch=main&style=flat-square&logo=github" alt="Build Status"></a>
     <a href="https://codecov.io/gh/formatphp/formatphp"><img src="https://img.shields.io/codecov/c/gh/formatphp/formatphp?label=codecov&logo=codecov&style=flat-square" alt="Codecov Code Coverage"></a>
-    <a href="https://shepherd.dev/github/formatphp/formatphp"><img src="https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fshepherd.dev%2Fgithub%2Fformatphp%2Fformatphp%2Fcoverage" alt="Psalm Type Coverage"></a>
 </p>
 
 ## About

@@ -13,7 +13,8 @@ use FormatPHP\Test\TestCase;
 class DisplayNamesTest extends TestCase
 {
     /**
-     * @psalm-param "region" | "script" $type
+     * @param "region" | "script" $type
+     *
      * @dataProvider invalidValueProvider
      */
     public function testThrowsExceptionForInvalidValue(string $code, string $type): void

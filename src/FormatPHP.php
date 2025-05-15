@@ -45,8 +45,8 @@ use function sprintf;
 /**
  * FormatPHP internationalization and localization
  *
- * @psalm-import-type DateTimeType from FormatterInterface
- * @psalm-import-type MessageValuesType from FormatterInterface
+ * @phpstan-import-type DateTimeType from FormatterInterface
+ * @phpstan-import-type MessageValuesType from FormatterInterface
  */
 class FormatPHP implements FormatterInterface
 {

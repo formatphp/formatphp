@@ -68,8 +68,6 @@ trait DeepCloner
      * @param array<array-key, mixed> $value
      *
      * @return mixed[]
-     *
-     * @psalm-suppress MixedAssignment
      */
     private function cloneArray(array $value): array
     {

@@ -39,11 +39,11 @@ use function strtolower;
 /**
  * An implementation of an ECMA-402 locale identifier
  *
- * @psalm-import-type CalendarType from DateTimeFormatOptions
- * @psalm-import-type HourType from DateTimeFormatOptions
- * @psalm-import-type NumeralType from NumberFormatOptions
- * @psalm-import-type CaseFirstType from LocaleOptions
- * @psalm-import-type CollationType from LocaleOptions
+ * @phpstan-import-type CalendarType from DateTimeFormatOptions
+ * @phpstan-import-type HourType from DateTimeFormatOptions
+ * @phpstan-import-type NumeralType from NumberFormatOptions
+ * @phpstan-import-type CaseFirstType from LocaleOptions
+ * @phpstan-import-type CollationType from LocaleOptions
  */
 class Locale implements LocaleInterface
 {
@@ -404,9 +404,9 @@ class Locale implements LocaleInterface
     }
 
     /**
-     * @throws InvalidArgumentException
+     * @return array{language: string | null, script: string | null, region: string | null, variants: array<string>, keywords: array<string, string>, grandfathered: string | null}
      *
-     * @psalm-return array{language: string | null, script: string | null, region: string | null, variants: array<string>, keywords: array<string, string>, grandfathered: string | null}
+     * @throws InvalidArgumentException
      */
     private function parseLocale(string $locale): array
     {

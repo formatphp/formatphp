@@ -30,8 +30,8 @@ use function mb_strlen;
 use function preg_match_all;
 
 /**
- * @psalm-import-type PeriodType from IntlDateTimeFormatOptions
- * @psalm-import-type WidthType from IntlDateTimeFormatOptions
+ * @phpstan-import-type PeriodType from IntlDateTimeFormatOptions
+ * @phpstan-import-type WidthType from IntlDateTimeFormatOptions
  */
 class DateTimeSkeletonParser
 {

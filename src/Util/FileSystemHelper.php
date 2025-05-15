@@ -249,7 +249,6 @@ class FileSystemHelper
 
         /**
          * @var Closure | callable | int $closure
-         * @psalm-suppress UnresolvableInclude
          */
         $closure = @include $path;
 

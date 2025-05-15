@@ -15,7 +15,7 @@ use FormatPHP\Test\TestCase;
  *
  * @link https://github.com/formatjs/formatjs/blob/78d35580ccd31f143bc1f3884326ecfe234c6929/packages/intl-numberformat/tests/percent.test.ts
  *
- * @psalm-import-type OptionsType from NumberFormatOptions
+ * @phpstan-import-type OptionsType from NumberFormatOptions
  */
 class PercentTest extends TestCase
 {

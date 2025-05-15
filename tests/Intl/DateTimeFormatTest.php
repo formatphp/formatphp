@@ -16,7 +16,7 @@ use function date_default_timezone_get;
 use function date_default_timezone_set;
 
 /**
- * @psalm-import-type OptionsType from DateTimeFormatOptions
+ * @phpstan-import-type OptionsType from DateTimeFormatOptions
  */
 class DateTimeFormatTest extends TestCase
 {
@@ -43,7 +43,8 @@ class DateTimeFormatTest extends TestCase
     }
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
+     *
      * @dataProvider formatProvider
      */
     public function testFormat(array $options, string $ko, string $en, string $skeleton, bool $skip = false): void
@@ -82,7 +83,8 @@ class DateTimeFormatTest extends TestCase
     }
 
     /**
-     * @psalm-param OptionsType $additionalOptions
+     * @param OptionsType $additionalOptions
+     *
      * @dataProvider formatThrowsExceptionWhenDateStyleOrTimeStyleMixedWithStylePropertyProvider
      */
     public function testFormatThrowsExceptionWhenDateStyleOrTimeStyleMixedWithStyleProperty(

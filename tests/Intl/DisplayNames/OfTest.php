@@ -11,7 +11,7 @@ use FormatPHP\Intl\Locale;
 use FormatPHP\Test\TestCase;
 
 /**
- * @psalm-import-type OptionsType from DisplayNamesOptions
+ * @phpstan-import-type OptionsType from DisplayNamesOptions
  */
 class OfTest extends TestCase
 {

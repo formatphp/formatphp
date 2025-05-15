@@ -61,8 +61,8 @@ use function strtolower;
 /**
  * Extracts message descriptors from application source code
  *
- * @psalm-import-type DescriptorParserCallable from DescriptorParserInterface
- * @psalm-import-type WriterType from WriterInterface
+ * @phpstan-import-type DescriptorParserCallable from DescriptorParserInterface
+ * @phpstan-import-type WriterType from WriterInterface
  */
 class MessageExtractor
 {
@@ -283,7 +283,7 @@ class MessageExtractor
     }
 
     /**
-     * @psalm-return Closure(DescriptorInterface):mixed
+     * @return Closure(DescriptorInterface):mixed
      */
     private function flattenMessage(): Closure
     {

@@ -29,8 +29,8 @@ use FormatPHP\MessageCollection;
 /**
  * Returns a collection of messages parsed from JSON-decoded message data
  *
- * @psalm-type ReaderCallableType = callable(mixed[]):MessageCollection
- * @psalm-type ReaderType = ReaderInterface | ReaderCallableType
+ * @phpstan-type ReaderCallableType callable(mixed[]):MessageCollection
+ * @phpstan-type ReaderType ReaderInterface | ReaderCallableType
  */
 interface ReaderInterface
 {

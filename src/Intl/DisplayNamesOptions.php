@@ -31,11 +31,11 @@ use JsonSerializable;
  *
  * @link https://tc39.es/ecma402/#sec-intl-displaynames-constructor
  *
- * @psalm-type FallbackType = "code" | "none"
- * @psalm-type LanguageDisplayType = "dialect" | "standard"
- * @psalm-type StyleType = "long" | "narrow" | "short"
- * @psalm-type TypeType = "calendar" | "currency" | "dateTimeField" | "language" | "region" | "script"
- * @psalm-type OptionsType = array{fallback?: FallbackType, languageDisplay?: LanguageDisplayType, style?: StyleType, type?: TypeType}
+ * @phpstan-type FallbackType "code" | "none"
+ * @phpstan-type LanguageDisplayType "dialect" | "standard"
+ * @phpstan-type StyleType "long" | "narrow" | "short"
+ * @phpstan-type TypeType "calendar" | "currency" | "dateTimeField" | "language" | "region" | "script"
+ * @phpstan-type OptionsType array{fallback?: FallbackType, languageDisplay?: LanguageDisplayType, style?: StyleType, type?: TypeType}
  */
 class DisplayNamesOptions implements JsonSerializable
 {
@@ -108,7 +108,7 @@ class DisplayNamesOptions implements JsonSerializable
     public ?string $type;
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
      */
     public function __construct(array $options = [])
     {

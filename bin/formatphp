@@ -56,7 +56,6 @@ use function fwrite;
         exit(1);
     }
 
-    /** @psalm-suppress UnresolvableInclude */
     require $composerAutoloader;
 
     (new Application())->run(new ArgvInput($argv));

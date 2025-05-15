@@ -17,7 +17,7 @@ use FormatPHP\MessageLoader;
 use function sprintf;
 
 /**
- * @psalm-import-type ReaderType from ReaderInterface
+ * @phpstan-import-type ReaderType from ReaderInterface
  */
 class MessageLoaderTest extends TestCase
 {

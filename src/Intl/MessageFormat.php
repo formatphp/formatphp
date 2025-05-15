@@ -98,6 +98,8 @@ class MessageFormat implements MessageFormatInterface
     }
 
     /**
+     * @param array<array-key, float | int | string | callable(string=):string> $values
+     *
      * @throws Parser\Exception\IllegalParserUsageException
      * @throws Parser\Exception\InvalidArgumentException
      * @throws Parser\Exception\InvalidOffsetException
@@ -107,8 +109,6 @@ class MessageFormat implements MessageFormatInterface
      * @throws Parser\Exception\UnableToParseMessageException
      * @throws UnableToFormatMessageException
      * @throws CollectionMismatchException
-     *
-     * @psalm-param array<array-key, float | int | string | callable(string=):string> $values
      */
     private function applyPreprocessing(string $pattern, array &$values = []): string
     {
@@ -140,17 +140,15 @@ class MessageFormat implements MessageFormatInterface
 
         assert($parsed->val instanceof Parser\Type\ElementCollection);
 
-        /** @psalm-suppress InvalidArgument */
         return (new Printer())->printAst($this->processAst($parsed->val, $callbacks, $valuesWithoutCallables));
     }
 
     /**
+     * @param array<array-key, callable(string=):string> $callbacks
      * @param array<array-key, float | int | string> $values
      *
      * @throws CollectionMismatchException
      * @throws UnableToFormatMessageException
-     *
-     * @psalm-param array<array-key, callable(string=):string> $callbacks
      */
     private function processAst(
         Parser\Type\ElementCollection $ast,
@@ -191,12 +189,11 @@ class MessageFormat implements MessageFormatInterface
     }
 
     /**
+     * @param array<array-key, callable(string=):string> $callbacks
      * @param array<array-key, float | int | string> $values
      *
      * @throws CollectionMismatchException
      * @throws UnableToFormatMessageException
-     *
-     * @psalm-param array<array-key, callable(string=):string> $callbacks
      */
     private function processTagElement(
         Parser\Type\TagElement $tagElement,
@@ -280,10 +277,10 @@ class MessageFormat implements MessageFormatInterface
     }
 
     /**
+     * @param array<array-key, callable(string=):string> $callbacks
+     *
      * @throws CollectionMismatchException
      * @throws UnableToFormatMessageException
-     *
-     * @psalm-param array<array-key, callable(string=):string> $callbacks
      */
     private function processLiteralElement(
         Parser\Type\LiteralElement $literalElement,

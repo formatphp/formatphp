@@ -135,7 +135,6 @@ class PragmaCollectorVisitor extends NodeVisitorAbstract
         preg_match_all('/(([a-z0-9_\-]+):([a-z0-9_\-]+))+/i', $metadata, $matches);
 
         /**
-         * @psalm-suppress UnnecessaryVarAnnotation
          * @var int $index
          * @var string $propertyName
          */

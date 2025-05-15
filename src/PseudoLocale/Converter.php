@@ -111,7 +111,6 @@ class Converter
 
         /**
          * @var class-string<PseudoLocaleInterface> | null $localeClass
-         * @psalm-suppress InvalidArrayOffset
          */
         $localeClass = $locales[strtolower($pseudoLocale)] ?? null;
 

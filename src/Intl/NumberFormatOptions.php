@@ -27,24 +27,24 @@ use FormatPHP\Icu\MessageFormat\Parser\Type\OptionSerializer;
 use JsonSerializable;
 
 /**
- * @psalm-type CompactDisplayType = "short" | "long"
- * @psalm-type CurrencyDisplayType = "symbol" | "code" | "name" | "narrowSymbol"
- * @psalm-type CurrencySignType = "standard" | "accounting"
- * @psalm-type CurrencyType = non-empty-string
- * @psalm-type DigitsType = positive-int
- * @psalm-type FractionDigitsType = DigitsType | 0
- * @psalm-type NotationType = "standard" | "scientific" | "engineering" | "compact"
- * @psalm-type NumeralType = "adlm" | "ahom" | "arab" | "arabext" | "bali" | "beng" | "bhks" | "brah" | "cakm" | "cham" | "deva" | "fullwide" | "gong" | "gonm" | "gujr" | "guru" | "hanidec" | "hmng" | "java" | "kali" | "khmr" | "knda" | "lana" | "lanatham" | "laoo" | "latn" | "lepc" | "limb" | "mathbold" | "mathdbl" | "mathmono" | "mathsanb" | "mathsans" | "mlym" | "modi" | "mong" | "mroo" | "mtei" | "mymr" | "mymrshan" | "mymrtlng" | "newa" | "nkoo" | "olck" | "orya" | "osma" | "rohg" | "saur" | "shrd" | "sind" | "sora" | "sund" | "takr" | "talu" | "tamldec" | "telu" | "thai" | "tibt" | "tirh" | "vaii" | "wara" | "wcho" | non-empty-string
- * @psalm-type RoundingModeType = "ceil" | "floor" | "expand" | "trunc" | "halfCeil" | "halfFloor" | "halfExpand" | "halfTrunc" | "halfEven" | "halfOdd" | "unnecessary"
- * @psalm-type RoundingPriorityType = "auto" | "morePrecision" | "lessPrecision"
- * @psalm-type ScaleType = float
- * @psalm-type SignDisplayType = "auto" | "always" | "never" | "exceptZero" | "negative"
- * @psalm-type StyleType = "decimal" | "percent" | "currency" | "unit"
- * @psalm-type TrailingZeroDisplayType = "auto" | "stripIfInteger"
- * @psalm-type UnitDisplayType = "short" | "long" | "narrow"
- * @psalm-type UnitType = "acre" | "bit" | "byte" | "celsius" | "centimeter" | "day" | "degree" | "fahrenheit" | "fluid-ounce" | "foot" | "gallon" | "gigabit" | "gigabyte" | "gram" | "hectare" | "hour" | "inch" | "kilobit" | "kilobyte" | "kilogram" | "kilometer" | "liter" | "megabit" | "megabyte" | "meter" | "mile" | "mile-scandinavian" | "milliliter" | "millimeter" | "millisecond" | "minute" | "month" | "ounce" | "percent" | "petabyte" | "pound" | "second" | "stone" | "terabit" | "terabyte" | "week" | "yard" | "year" | non-empty-string
- * @psalm-type UseGroupingType = "always" | "auto" | "false" | "min2" | "thousands" | "true"
- * @psalm-type OptionsType = array{compactDisplay?: CompactDisplayType, currency?: CurrencyType, currencyDisplay?: CurrencyDisplayType, currencySign?: CurrencySignType, maximumFractionDigits?: FractionDigitsType, maximumSignificantDigits?: DigitsType, minimumFractionDigits?: FractionDigitsType, minimumIntegerDigits?: DigitsType, minimumSignificantDigits?: DigitsType, notation?: NotationType, numberingSystem?: NumeralType, roundingMode?: RoundingModeType, roundingPriority?: RoundingPriorityType, scale?: ScaleType, signDisplay?: SignDisplayType, style?: StyleType, trailingZeroDisplay?: TrailingZeroDisplayType, unit?: UnitType, unitDisplay?: UnitDisplayType, useGrouping?: UseGroupingType}
+ * @phpstan-type CompactDisplayType "short" | "long"
+ * @phpstan-type CurrencyDisplayType "symbol" | "code" | "name" | "narrowSymbol"
+ * @phpstan-type CurrencySignType "standard" | "accounting"
+ * @phpstan-type CurrencyType non-empty-string
+ * @phpstan-type DigitsType positive-int
+ * @phpstan-type FractionDigitsType DigitsType | 0
+ * @phpstan-type NotationType "standard" | "scientific" | "engineering" | "compact"
+ * @phpstan-type NumeralType "adlm" | "ahom" | "arab" | "arabext" | "bali" | "beng" | "bhks" | "brah" | "cakm" | "cham" | "deva" | "fullwide" | "gong" | "gonm" | "gujr" | "guru" | "hanidec" | "hmng" | "java" | "kali" | "khmr" | "knda" | "lana" | "lanatham" | "laoo" | "latn" | "lepc" | "limb" | "mathbold" | "mathdbl" | "mathmono" | "mathsanb" | "mathsans" | "mlym" | "modi" | "mong" | "mroo" | "mtei" | "mymr" | "mymrshan" | "mymrtlng" | "newa" | "nkoo" | "olck" | "orya" | "osma" | "rohg" | "saur" | "shrd" | "sind" | "sora" | "sund" | "takr" | "talu" | "tamldec" | "telu" | "thai" | "tibt" | "tirh" | "vaii" | "wara" | "wcho" | non-empty-string
+ * @phpstan-type RoundingModeType "ceil" | "floor" | "expand" | "trunc" | "halfCeil" | "halfFloor" | "halfExpand" | "halfTrunc" | "halfEven" | "halfOdd" | "unnecessary"
+ * @phpstan-type RoundingPriorityType "auto" | "morePrecision" | "lessPrecision"
+ * @phpstan-type ScaleType float
+ * @phpstan-type SignDisplayType "auto" | "always" | "never" | "exceptZero" | "negative"
+ * @phpstan-type StyleType "decimal" | "percent" | "currency" | "unit"
+ * @phpstan-type TrailingZeroDisplayType "auto" | "stripIfInteger"
+ * @phpstan-type UnitDisplayType "short" | "long" | "narrow"
+ * @phpstan-type UnitType "acre" | "bit" | "byte" | "celsius" | "centimeter" | "day" | "degree" | "fahrenheit" | "fluid-ounce" | "foot" | "gallon" | "gigabit" | "gigabyte" | "gram" | "hectare" | "hour" | "inch" | "kilobit" | "kilobyte" | "kilogram" | "kilometer" | "liter" | "megabit" | "megabyte" | "meter" | "mile" | "mile-scandinavian" | "milliliter" | "millimeter" | "millisecond" | "minute" | "month" | "ounce" | "percent" | "petabyte" | "pound" | "second" | "stone" | "terabit" | "terabyte" | "week" | "yard" | "year" | non-empty-string
+ * @phpstan-type UseGroupingType "always" | "auto" | "false" | "min2" | "thousands" | "true"
+ * @phpstan-type OptionsType array{compactDisplay?: CompactDisplayType, currency?: CurrencyType, currencyDisplay?: CurrencyDisplayType, currencySign?: CurrencySignType, maximumFractionDigits?: FractionDigitsType, maximumSignificantDigits?: DigitsType, minimumFractionDigits?: FractionDigitsType, minimumIntegerDigits?: DigitsType, minimumSignificantDigits?: DigitsType, notation?: NotationType, numberingSystem?: NumeralType, roundingMode?: RoundingModeType, roundingPriority?: RoundingPriorityType, scale?: ScaleType, signDisplay?: SignDisplayType, style?: StyleType, trailingZeroDisplay?: TrailingZeroDisplayType, unit?: UnitType, unitDisplay?: UnitDisplayType, useGrouping?: UseGroupingType}
  */
 class NumberFormatOptions implements JsonSerializable
 {
@@ -319,7 +319,7 @@ class NumberFormatOptions implements JsonSerializable
     public ?string $useGrouping = null;
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
      */
     public function __construct(array $options = [])
     {

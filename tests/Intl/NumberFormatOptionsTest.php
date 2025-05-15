@@ -11,7 +11,7 @@ use function constant;
 use function json_encode;
 
 /**
- * @psalm-import-type OptionsType from NumberFormatOptions
+ * @phpstan-import-type OptionsType from NumberFormatOptions
  */
 class NumberFormatOptionsTest extends TestCase
 {
@@ -24,7 +24,8 @@ class NumberFormatOptionsTest extends TestCase
     }
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
+     *
      * @dataProvider constructorOptionsProvider
      */
     public function testConstructorOptions(array $options): void

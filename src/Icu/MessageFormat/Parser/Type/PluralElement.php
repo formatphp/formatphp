@@ -24,8 +24,8 @@ declare(strict_types=1);
 namespace FormatPHP\Icu\MessageFormat\Parser\Type;
 
 /**
- * @psalm-type PluralKeyType = "zero" | "one" | "two" | "few" | "many" | "other" | string
- * @psalm-type PluralType = "cardinal" | "ordinal"
+ * @phpstan-type PluralKeyType "zero" | "one" | "two" | "few" | "many" | "other" | string
+ * @phpstan-type PluralType "cardinal" | "ordinal"
  */
 final class PluralElement extends AbstractElement
 {

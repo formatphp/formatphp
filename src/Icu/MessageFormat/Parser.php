@@ -49,9 +49,9 @@ use function min;
 use function rtrim;
 
 /**
- * @psalm-type ArgType = "number" | "date" | "time" | "select" | "plural" | "selectordinal" | ""
- * @psalm-type IdentifierType = array{value: string, location: Type\Location}
- * @psalm-type PluralSelectType = array{0: string, 1: Type\PluralOrSelectOption}
+ * @phpstan-type ArgType "number" | "date" | "time" | "select" | "plural" | "selectordinal" | ""
+ * @phpstan-type IdentifierType array{value: string, location: Type\Location}
+ * @phpstan-type PluralSelectType array{0: string, 1: Type\PluralOrSelectOption}
  */
 class Parser
 {
@@ -528,12 +528,12 @@ class Parser
      * Advance the parser until the end of the identifier, if it is currently on
      * an identifier character. Return an empty string otherwise.
      *
+     * @return IdentifierType
+     *
      * @throws Exception\InvalidArgumentException
      * @throws Exception\InvalidOffsetException
      * @throws Exception\InvalidUtf8CodeBoundaryException
      * @throws Exception\InvalidUtf8CodePointException
-     *
-     * @psalm-return IdentifierType
      */
     private function parseIdentifierIfPossible(): array
     {
@@ -879,13 +879,13 @@ class Parser
     }
 
     /**
+     * @param Error::* $expectNumberError
+     * @param Error::* $invalidNumberError
+     *
      * @return array{value: int | null, error: Error | null}
      *
      * @throws Exception\InvalidOffsetException
      * @throws Exception\InvalidUtf8CodeBoundaryException
-     *
-     * @psalm-param Error::* $expectNumberError
-     * @psalm-param Error::* $invalidNumberError
      */
     private function tryParseDecimalInteger(int $expectNumberError, int $invalidNumberError): array
     {
@@ -1102,7 +1102,7 @@ class Parser
     }
 
     /**
-     * @psalm-param Error::* $kind
+     * @param Error::* $kind
      */
     private function error(int $kind, Type\Location $location): Result
     {

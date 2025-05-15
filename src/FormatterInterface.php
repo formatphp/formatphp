@@ -31,10 +31,10 @@ use FormatPHP\Intl\NumberFormatOptions;
 /**
  * FormatPHP formatter methods
  *
- * @psalm-type MessageDescriptorType = array{id?: string, defaultMessage?: string, description?: string}
- * @psalm-type MessageValuesType = array<array-key, float | int | string | callable(string=):string>
- * @psalm-type DateTimeType = PhpDateTimeInterface | string | int
- * @psalm-type NumberType = int | float
+ * @phpstan-type MessageDescriptorType array{id?: string, defaultMessage?: string, description?: string}
+ * @phpstan-type MessageValuesType array<array-key, float | int | string | callable(string=):string>
+ * @phpstan-type DateTimeType PhpDateTimeInterface | string | int
+ * @phpstan-type NumberType int | float
  */
 interface FormatterInterface
 {
@@ -47,11 +47,11 @@ interface FormatterInterface
      * If we cannot find the given ID in the configured messages, we will use
      * the descriptor's defaultMessage, if provided.
      *
+     * @param MessageDescriptorType $descriptor
+     * @param MessageValuesType $values
+     *
      * @throws Exception\InvalidArgumentException
      * @throws Exception\UnableToFormatMessageException
-     *
-     * @psalm-param MessageDescriptorType $descriptor
-     * @psalm-param MessageValuesType $values
      */
     public function formatMessage(array $descriptor, array $values = []): string;
 

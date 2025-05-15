@@ -30,7 +30,6 @@ use MyCLabs\Enum\Enum;
  *
  * @method static SkeletonType Number()
  * @method static SkeletonType DateTime()
- * @psalm-immutable
  * @extends Enum<int>
  */
 final class SkeletonType extends Enum

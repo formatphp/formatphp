@@ -10,7 +10,7 @@ use FormatPHP\Intl\NumberFormatOptions;
 use FormatPHP\Test\TestCase;
 
 /**
- * @psalm-import-type OptionsType from NumberFormatOptions
+ * @phpstan-import-type OptionsType from NumberFormatOptions
  */
 class CurrencyTest extends TestCase
 {

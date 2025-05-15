@@ -27,16 +27,16 @@ use FormatPHP\Icu\MessageFormat\Parser\Type\OptionSerializer;
 use JsonSerializable;
 
 /**
- * @psalm-import-type NumeralType from NumberFormatOptions
- * @psalm-type CalendarType = "buddhist" | "chinese" | "coptic" | "dangi" | "ethioaa" | "ethiopic" | "gregory" | "hebrew" | "indian" | "islamic" | "islamic-civil" | "islamic-rgsa" | "islamic-tbla" | "islamic-umalqura" | "iso8601" | "japanese" | "persian" | "roc" | non-empty-string
- * @psalm-type FractionDigitsType = 0 | 1 | 2 | 3
- * @psalm-type HourType = "h11" | "h12" | "h23" | "h24"
- * @psalm-type PeriodType = "narrow" | "short" | "long"
- * @psalm-type StyleType = "full" | "long" | "medium" | "short"
- * @psalm-type TimeZoneNameType = "long" | "short" | "shortOffset" | "longOffset" | "shortGeneric" | "longGeneric"
- * @psalm-type TimeZoneType = non-empty-string
- * @psalm-type WidthType = "numeric" | "2-digit"
- * @psalm-type OptionsType = array{dateStyle?: StyleType, timeStyle?: StyleType, calendar?: CalendarType, dayPeriod?: PeriodType, numberingSystem?: NumeralType, timeZone?: TimeZoneType, hour12?: bool, hourCycle?: HourType, weekday?: PeriodType, era?: PeriodType, year?: WidthType, month?: WidthType | PeriodType, day?: WidthType, hour?: WidthType, minute?: WidthType, second?: WidthType, fractionalSecondDigits?: FractionDigitsType, timeZoneName?: TimeZoneNameType}
+ * @phpstan-import-type NumeralType from NumberFormatOptions
+ * @phpstan-type CalendarType "buddhist" | "chinese" | "coptic" | "dangi" | "ethioaa" | "ethiopic" | "gregory" | "hebrew" | "indian" | "islamic" | "islamic-civil" | "islamic-rgsa" | "islamic-tbla" | "islamic-umalqura" | "iso8601" | "japanese" | "persian" | "roc" | non-empty-string
+ * @phpstan-type FractionDigitsType 0 | 1 | 2 | 3
+ * @phpstan-type HourType "h11" | "h12" | "h23" | "h24"
+ * @phpstan-type PeriodType "narrow" | "short" | "long"
+ * @phpstan-type StyleType "full" | "long" | "medium" | "short"
+ * @phpstan-type TimeZoneNameType "long" | "short" | "shortOffset" | "longOffset" | "shortGeneric" | "longGeneric"
+ * @phpstan-type TimeZoneType non-empty-string
+ * @phpstan-type WidthType "numeric" | "2-digit"
+ * @phpstan-type OptionsType array{dateStyle?: StyleType, timeStyle?: StyleType, calendar?: CalendarType, dayPeriod?: PeriodType, numberingSystem?: NumeralType, timeZone?: TimeZoneType, hour12?: bool, hourCycle?: HourType, weekday?: PeriodType, era?: PeriodType, year?: WidthType, month?: WidthType | PeriodType, day?: WidthType, hour?: WidthType, minute?: WidthType, second?: WidthType, fractionalSecondDigits?: FractionDigitsType, timeZoneName?: TimeZoneNameType}
  */
 class DateTimeFormatOptions implements JsonSerializable
 {
@@ -216,7 +216,7 @@ class DateTimeFormatOptions implements JsonSerializable
     public ?string $timeZoneName = null;
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
      */
     public function __construct(array $options = [])
     {

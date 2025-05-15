@@ -50,7 +50,7 @@ use const SCANDIR_SORT_NONE;
 /**
  * Loads messages for a given locale from the file system or cache
  *
- * @psalm-import-type ReaderType from ReaderInterface
+ * @phpstan-import-type ReaderType from ReaderInterface
  */
 class MessageLoader
 {

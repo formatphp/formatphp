@@ -19,7 +19,7 @@ use Locale as PhpLocale;
 use function date;
 
 /**
- * @psalm-import-type OptionsType from DisplayNamesOptions
+ * @phpstan-import-type OptionsType from DisplayNamesOptions
  */
 class FormatPHPTest extends TestCase
 {
@@ -402,7 +402,8 @@ class FormatPHPTest extends TestCase
     }
 
     /**
-     * @psalm-param OptionsType $options
+     * @param OptionsType $options
+     *
      * @dataProvider formatDisplayNameProvider
      */
     public function testFormatDisplayName(string $tag, string $value, array $options, ?string $expected): void
@@ -417,7 +418,7 @@ class FormatPHPTest extends TestCase
     }
 
     /**
-     * @psalm-return array<array{tag: string, value: string, options: OptionsType, expected: string | null}>
+     * @return array<array{tag: string, value: string, options: OptionsType, expected: string | null}>
      */
     public function formatDisplayNameProvider(): array
     {

@@ -29,8 +29,8 @@ use FormatPHP\DescriptorCollection;
  * Converts a DescriptorCollection into an appropriate data structure for
  * converting to JSON and writing to a file
  *
- * @psalm-type WriterCallableType = callable(DescriptorCollection,WriterOptions):mixed[]
- * @psalm-type WriterType = WriterInterface | WriterCallableType
+ * @phpstan-type WriterCallableType callable(DescriptorCollection,WriterOptions):mixed[]
+ * @phpstan-type WriterType WriterInterface | WriterCallableType
  */
 interface WriterInterface
 {

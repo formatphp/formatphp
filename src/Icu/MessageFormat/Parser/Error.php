@@ -30,7 +30,7 @@ use Throwable;
 use function array_flip;
 
 /**
- * @psalm-type ErrorKind = Error::*
+ * @phpstan-type ErrorKind Error::*
  */
 class Error
 {

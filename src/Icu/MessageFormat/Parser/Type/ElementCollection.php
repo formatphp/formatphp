@@ -49,8 +49,6 @@ final class ElementCollection extends AbstractCollection implements
      * @return ElementCollection
      *
      * @throws CollectionMismatchException
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType, MoreSpecificReturnType
      */
     public function merge(CollectionInterface ...$collections): CollectionInterface
     {

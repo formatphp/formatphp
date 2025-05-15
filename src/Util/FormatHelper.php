@@ -54,10 +54,10 @@ use function strtolower;
 /**
  * Utilities for format readers and writers
  *
- * @psalm-import-type ReaderCallableType from ReaderInterface
- * @psalm-import-type ReaderType from ReaderInterface
- * @psalm-import-type WriterCallableType from WriterInterface
- * @psalm-import-type WriterType from WriterInterface
+ * @phpstan-import-type ReaderCallableType from ReaderInterface
+ * @phpstan-import-type ReaderType from ReaderInterface
+ * @phpstan-import-type WriterCallableType from WriterInterface
+ * @phpstan-import-type WriterType from WriterInterface
  */
 class FormatHelper
 {
@@ -141,7 +141,6 @@ class FormatHelper
     private function loadFormatter(string $format, string $type): callable
     {
         if (class_exists($format) && is_a($format, $type, true)) {
-            /** @psalm-suppress MixedMethodCall */
             return new $format();
         }
 
@@ -160,8 +159,6 @@ class FormatHelper
      * @return ReaderCallableType
      *
      * @throws InvalidArgumentException
-     *
-     * @psalm-suppress UndefinedMethod, PossiblyNullReference
      */
     public function validateReaderCallable(?callable $formatter): callable
     {
@@ -197,8 +194,6 @@ class FormatHelper
      * @return WriterCallableType
      *
      * @throws InvalidArgumentException
-     *
-     * @psalm-suppress UndefinedMethod, PossiblyNullReference
      */
     public function validateWriterCallable(?callable $formatter): callable
     {

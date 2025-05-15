@@ -20,7 +20,7 @@ use FormatPHP\Test\TestCase;
 use FormatPHP\Util\DescriptorIdBuilder;
 
 /**
- * @psalm-import-type MessageValuesType from FormatterInterface
+ * @phpstan-import-type MessageValuesType from FormatterInterface
  */
 class MessageFormatTest extends TestCase
 {

@@ -31,11 +31,11 @@ namespace FormatPHP\Intl;
  *
  * @link https://tc39.es/ecma402/#locale-objects
  *
- * @psalm-import-type CalendarType from DateTimeFormatOptions
- * @psalm-import-type HourType from DateTimeFormatOptions
- * @psalm-import-type NumeralType from NumberFormatOptions
- * @psalm-import-type CaseFirstType from LocaleOptions
- * @psalm-import-type CollationType from LocaleOptions
+ * @phpstan-import-type CalendarType from DateTimeFormatOptions
+ * @phpstan-import-type HourType from DateTimeFormatOptions
+ * @phpstan-import-type NumeralType from NumberFormatOptions
+ * @phpstan-import-type CaseFirstType from LocaleOptions
+ * @phpstan-import-type CollationType from LocaleOptions
  */
 interface LocaleInterface
 {
@@ -61,7 +61,7 @@ interface LocaleInterface
     /**
      * Returns whether case is accounted for in this locale's collation rules
      *
-     * @psalm-return CaseFirstType | null
+     * @return CaseFirstType | null
      */
     public function caseFirst(): ?string;
 
@@ -90,7 +90,7 @@ interface LocaleInterface
     /**
      * Returns this locale's time-keeping convention
      *
-     * @psalm-return HourType | null
+     * @return HourType | null
      */
     public function hourCycle(): ?string;
 

@@ -44,7 +44,7 @@ use function trim;
 /**
  * Formats a number for a given locale
  *
- * @psalm-import-type FractionDigitsType from NumberFormatOptions
+ * @phpstan-import-type FractionDigitsType from NumberFormatOptions
  */
 class NumberFormat implements NumberFormatInterface
 {

@@ -11,7 +11,7 @@ use FormatPHP\Test\TestCase;
 use RuntimeException;
 
 /**
- * @psalm-import-type ErrorKind from Error
+ * @phpstan-import-type ErrorKind from Error
  */
 class ErrorTest extends TestCase
 {

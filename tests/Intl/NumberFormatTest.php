@@ -12,8 +12,8 @@ use FormatPHP\Intl\NumberFormatOptions;
 use FormatPHP\Test\TestCase;
 
 /**
- * @psalm-import-type OptionsType from NumberFormatOptions
- * @psalm-import-type RoundingModeType from NumberFormatOptions
+ * @phpstan-import-type OptionsType from NumberFormatOptions
+ * @phpstan-import-type RoundingModeType from NumberFormatOptions
  */
 class NumberFormatTest extends TestCase
 {
@@ -123,8 +123,8 @@ class NumberFormatTest extends TestCase
 
     /**
      * @param int | float $number
+     * @param OptionsType $options
      *
-     * @psalm-param OptionsType $options
      * @dataProvider formatProvider
      */
     public function testFormat($number, string $locale, array $options, string $expected, string $skeleton): void
