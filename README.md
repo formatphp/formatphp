@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/formatphp/formatphp"><img src="http://img.shields.io/badge/source-formatphp/formatphp-blue.svg?style=flat-square" alt="Source Code"></a>
+    <a href="https://github.com/formatphp/formatphp"><img src="https://img.shields.io/badge/source-formatphp/formatphp-blue.svg?style=flat-square" alt="Source Code"></a>
     <a href="https://packagist.org/packages/formatphp/formatphp"><img src="https://img.shields.io/packagist/v/formatphp/formatphp.svg?style=flat-square&label=release" alt="Download Package"></a>
     <a href="https://php.net"><img src="https://img.shields.io/packagist/php-v/formatphp/formatphp.svg?style=flat-square&colorB=%238892BF" alt="PHP Programming Language"></a>
-    <a href="https://github.com/formatphp/formatphp/blob/main/LICENSE"><img src="https://img.shields.io/packagist/l/formatphp/formatphp.svg?style=flat-square&colorB=darkcyan" alt="Read License"></a>
-    <a href="https://github.com/formatphp/formatphp/actions/workflows/continuous-integration.yml"><img src="https://img.shields.io/github/actions/workflow/status/formatphp/formatphp/continuous-integration.yml?branch=main&style=flat-square&logo=github" alt="Build Status"></a>
+    <a href="https://github.com/formatphp/formatphp/blob/develop/LICENSE"><img src="https://img.shields.io/packagist/l/formatphp/formatphp.svg?style=flat-square&colorB=darkcyan" alt="Read License"></a>
+    <a href="https://github.com/formatphp/formatphp/actions/workflows/continuous-integration.yml"><img src="https://img.shields.io/github/actions/workflow/status/formatphp/formatphp/continuous-integration.yml?branch=develop&style=flat-square&logo=github" alt="Build Status"></a>
     <a href="https://codecov.io/gh/formatphp/formatphp"><img src="https://img.shields.io/codecov/c/gh/formatphp/formatphp?label=codecov&logo=codecov&style=flat-square" alt="Codecov Code Coverage"></a>
 </p>
 
